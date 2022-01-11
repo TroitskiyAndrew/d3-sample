@@ -1,0 +1,598 @@
+﻿@charset "utf-8";
+
+/* Ввели для стилизации цитаты в email письмах*/
+blockquote {
+    padding-left: 10px;
+    border-left: 1px #CCC solid;
+    margin: 16px 10px;
+}
+
+.value-editor.displaylabel {
+    /* было ограничение на pre (white-space: pre-wrap) - чтоб в письмах длинные строки переносились..
+       но так плохо, тк обычно в pre не надо чтоб длинные строки переносились - убрал с pre,
+       добавил чтоб ограничивалась длинна эдитора показывающего текст
+    */
+    max-width: 80em;
+}
+
+
+.sectionheader {
+    padding: 2px 7px;
+    background: #D4E3E5;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*#region filterCell*/
+.filterCell {
+    height: 21px;
+}
+
+.filterCell input {
+    outline: none;
+}
+
+.filterCell > table {
+    visibility: hidden;
+}
+
+.filterCell:hover > table, .filterCell.filterCellFocus > table, .filterCellEnabled > table  {
+    visibility: visible;
+}
+
+.filterCellEnabled > table > tbody > tr > td.dxic input, .filterCellEnabled > table > tbody > tr > td > table > tbody > tr > td.dxic,
+.filterCellEnabled > table > tbody > tr > td.dxic {
+    padding: 2px 0 2px 2px;
+}
+
+.filterCellEnabled > table > tbody > tr > td.dxic input, .filterCellEnabled > table > tbody > tr > td > table > tbody > tr > td.dxic input {
+    background-color: #ffdaa4;
+    padding: 0 1px 1px 2px;
+}
+
+.filterCellEnabled .clearFilterColumn {
+    background-color: #ffdaa4;
+    margin-left: -1px; 
+}
+
+.filterCellEnabled .clearFilterColumn img {
+    cursor: pointer;
+    width: 15px;
+}
+
+.filterCellEnabled .clearFilterCell {
+    padding: 2px 2px 2px 0px;
+}
+
+.filterCommandCell {
+    background: url(img/filter_default.png) 4px 0px no-repeat;
+}
+
+.filterCommandCellEnabled {
+    background: url(img/filter_enabled16x16.png) 0px 4px no-repeat;
+}
+/*#endregion*/
+
+textarea.bigsize{
+    max-height: 800px;
+    resize: none;
+}
+
+.grid {
+    padding: 0px;
+    background: #FFFFFF;
+}
+
+.noneTitle {
+    background: none;
+}
+
+.sb-menu-separator {
+    width: 0px;
+}
+
+.sBorderBottom {
+    border-bottom: 1px solid #7EACB1;
+}
+
+/*#region форма редактирования записи*/
+/*#region recordform*/
+.recordform .sb-toolbar {
+    background: transparent;
+}
+/*#endregion*/
+
+/*#region враперы для редактирования формы записи*/
+.bottomButtonPlace {
+    border-top: 1px solid #7EACB1;
+    padding: 5px;
+}
+
+
+.containerTable {
+    overflow: auto;
+    margin-bottom: 5px;
+}
+/*#endregion*/
+
+
+/*#region Table View*/
+.titleTable th.checkBox {
+    width: 20px;
+}
+
+tr.tv-row > td.selectCell > input[type=checkbox]:not(:checked) {
+    display: none;
+}
+
+tr.tv-row:hover > td.selectCell > input[type=checkbox] {
+    display: inline;
+    cursor: default;
+}
+
+/*#endregion*/
+
+/*#region editableGrid*/
+.EditableGrid
+{
+    border-collapse: collapse;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.editableCell
+{
+    padding: 5px 10px 5px 10px;
+    /*text-align: left; размеры ячеек подстраиваются под эдиторы. Если если колонка Bool и заголовок длинный то не красиво. checkbox выровнен в лево а справа много места*/
+    vertical-align: top;
+    border: none;
+    border-collapse: collapse;
+    border-bottom: 1px solid #BBB;
+}
+
+.EditableGridAction {
+    border: none;
+    border-collapse: collapse;
+    border-bottom: 1px solid #BBB;
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 10px;
+}
+
+.fixedSize {
+    width: 10px;
+    white-space: nowrap;
+}
+
+.EditableGrid > tbody > tr:hover > td{
+    background: #F4F4F4;
+}
+
+.editableCell input[type=text],.editableCell input[type=checkbox], 
+.editableCell select, .editableCell textarea {
+    border: 1px dotted #D0D0D0;
+}
+
+.EditableGrid tr th{
+    border-bottom: 1px solid #41393B;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.EditableGrid tr th .formalTh {
+    font: inherit;
+}
+
+.EditableGrid tr th .formalTh .requeredCell {
+    color: red;
+}
+
+.isDelete, .EditableGrid > tbody > tr:hover > td.isDelete {
+    background: rgb(212, 212, 212);
+}
+
+.spaceErrorEditableGrid {
+    border-bottom: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    padding: 5px 5px 5px 5px;
+}
+/*#endregion*/
+
+
+/*#region хинты, подсказки для инпутов*/
+.textInputHint {
+    position: absolute;
+    margin: 2px 5px;
+    left: 0px;
+    top: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+    text-align: left;
+}
+
+.inputHint {
+    display: inline;
+}
+
+.inputHintHide {
+    display: none;
+}
+
+.ingIputHint {
+    position: absolute;
+    top: 8px;
+    left: -7px; 
+}
+/*#endregion*/
+
+/*#region ui*/
+input.ui-button {
+    font-size: 100%;
+}
+
+.ui-widget-overlay {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.ui-corner-all {
+    font-family: arial;
+}
+
+.tabscontainer {
+    border: none;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.ui-menu .ui-menu-item a {
+    font-size: 1em;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    margin-bottom: 0px;
+}
+
+.ui-tabs .ui-tabs-nav li a  {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+/*вкладки*/
+.countRecord {
+    color: #999999;
+    font-weight: normal;
+    margin-left: 5px;
+}
+/*----вкладки----*/
+/*#endregion*/
+
+/*#region инструкция по встраиванию */
+#installHelp .embDescr,#installHelp .spoil {
+    padding-bottom: 20px;
+}
+
+#installHelp .spoil .embDescr {
+    padding-bottom: 0px;
+}
+
+#installHelp input[type=radio] {
+    margin: 0px;
+}
+
+#installHelp .divHelpHint {
+    vertical-align: middle;
+    margin: 0px;
+}
+
+#installHelp .embDescr .text {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+#installHelp .embDescr .example .caption {
+    display: inline-block;
+    padding: 3px 5px 3px 5px;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #7F9DB9;
+    position: relative;
+    top: 1px;
+    background: rgb(255,255,255); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmUyZTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(226,226,226,1) 100%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(226,226,226,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%,rgba(255,255,255,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%,rgba(255,255,255,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#installHelp .embDescr .example .caption.active {
+    cursor: default;
+    border-bottom: 1px solid white;
+    background: white;
+}
+
+#installHelp .embDescr .example textarea {
+    border: 1px solid #7F9DB9;
+    outline: none;
+}
+
+#installHelp .embDescr .example textarea:focus {
+    background: white;
+}
+/*#endregion*/
+
+/*#region история изменения записи*/
+.oldValue {
+    text-decoration: line-through;
+}
+/*#endregion*/
+
+
+/*#region правила для офрмления простого грида*/
+table.simple {
+    border-spacing: 0;
+}
+table.simple > tbody > tr > th, table.simple > tbody > tr > td{
+    border: 1px solid var(--simple-border-color);
+    padding: 2px 5px 3px 5px;
+}
+
+table.simple > tbody > tr > th:not(:first-of-type) {
+    border-left-width: 0;
+}
+
+table.simple > tbody > tr > td {
+    border-top-width: 0;
+}
+
+table.simple > tbody > tr > td:not(:first-of-type) {
+    border-left-width: 0;
+}
+
+table.simple > tbody > tr > th {
+    text-align: left;
+}
+table.simple > tbody > tr > th{
+    background: var(--simple-table-head);
+    padding: 0 5px;
+}
+table.simple > tbody > .tv-row.s-checked{
+    /* для выбранной ячейки меняем цвет. Так как у нее может быть предопределенный цвет в атрибуте style, 
+    приходится использовать !Important чтобы его перебить */
+    background: #E9F6F8 !important;
+}
+table.simple > tbody > .tv-row.s-checked:hover{
+    /* Стандартное правило для ховера перебивается правилом выше (для выбранной строки)
+    По этому мы добавляем еще одно правило тут, чтобы ховер выделенной строки обозначился сменой цвета */
+    background: var(--row-hover-color) !important;
+}
+
+table.simple > tbody > tr.tv-row,
+table.simple > tbody > tr.tv-total{
+    font: 12px Tahoma,Geneva,sans-serif;
+}
+
+tr.tv-total > td > .grid-cell {
+    font-weight: bold;
+}
+table.simple > tbody > tr.tv-total > td:not(:last-of-type) {
+    border-right-width: 0;
+}
+
+tr.tv-total > td {
+    background-color: var(--simple-table-head);
+    filter: brightness(90%);
+}
+
+table.simple > tbody > tr.row-details {
+  background-color: #f8f8f8;
+}
+table.simple > tbody > tr.row-details > td {
+  padding: 6px 2px 8px 0;
+}
+table.simple > tbody > tr.row-details > td.indent-cell{
+    border-right: none;
+}
+table.simple > tbody > tr.row-details > td.indent-cell + td{
+    border-left: none;
+}
+table.simple > tbody > tr.tv-row > td.cmds {
+    border-right: none;
+}
+table.simple > tbody > tr.tv-row > td.cmds + td {
+    border-left: none;
+}
+table.simple > tbody > tr.tv-row > td.cmds > cmd{
+    cursor: pointer;
+    color: Gray;
+    font-weight: bold;
+}
+/* если состояние - скрыто, то скрываем последующую строку детэйлс */
+table > tbody > tr.tv-row._details-collapsed + tr.row-details {
+    display: none;
+}
+table.simple > tbody > tr.tv-row._details-collapsed > td.cmds > cmd[role=action-details-toggler]:before {
+  content: "+";
+}
+table.simple > tbody > tr.tv-row > td.cmds > cmd[role=action-details-toggler]:before {
+  content: "−";
+}
+table.simple > tbody > tr.tv-row > td.cmds > cmd:hover {
+  color: Black;
+}
+
+/* simple in simple - tune */
+table.simple > tbody > tr.row-details > td table.simple > tbody > tr > th {
+    font-weight: normal;
+}
+table.simple > tbody > tr.row-details > td table.simple > tbody > tr {
+    background-color: White;
+}
+
+table.simple > tbody > tr {
+    height: 1.6em;
+}
+
+table.simple > tbody > tr > td.selectCell,
+table.simple > tbody > tr > th.selectHeaderCell{
+    padding-bottom: 0;
+}
+
+table.simple > tbody > tr > td.selectCell > input[type=checkbox],
+table.simple > tbody > tr > th.selectHeaderCell > input[type=checkbox]{
+    height: 14px;
+    width: 14px;
+}
+
+table.simple > tbody > tr > th.selectHeaderCell > input[type=checkbox]{
+    margin-top: 4px;
+}
+
+/*#endregion*/
+
+
+/*#region для табл. представлений*/
+
+.tableView > .params-auto{
+    padding-top: 5px;
+}
+/*скрываем нижний, левый и правый бордюры для грида, который лежит в window, т.к. window сам делает границы*/
+.tableView._window > .tableViewData > table {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+/*тоже и для табл со стилем simple*/
+._window > table.simple > tbody > tr > th:first-child, ._window > table.simple > tbody > tr > td:first-child {
+    border-left: 0;
+}
+._window > table.simple > tbody > tr:last-child > th, ._window > table.simple > tbody > tr:last-child > td {
+    border-bottom: 0;
+}
+/*для вью внутри блока - делаем отступы от блока*/
+.block-content > .tableView{
+    padding: 0px 5px 10px 5px;
+}
+.tableView > .filtersPanel {
+    padding: 10px;
+}
+
+.tableView > .filtersPanel.buttonPanel > .item {
+    margin-right: 10px;
+}
+
+.tableView > .sb-toolbar {
+    border: 0;
+}
+
+.tableView .params-btnview {
+    min-height: 29px;
+    
+    padding: 5px 10px 5px 30px;
+    margin-left: 5px;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    background-image: url("/Content/img/filter_default.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.tableView .params-btnview:hover {
+    background-image: url("/Content/img/filter_enabled.png");
+}
+
+
+
+
+._window.tableView > *:not(.title) + hr {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+
+._window.tableView>.tableViewData.simple>tbody:first-of-type>tr>th {
+    border-top: 0;
+}
+.tableView>.tableViewData.simple>tbody:first-of-type>tr>th {
+    height: 10px;
+}
+
+/*#endregion*/
+
+
+/*#region linkedRecords разширение для expandingBlock */
+.recordform .linkedRecords {
+    border: 0px;
+    margin: 10px 0px 0px 0px;
+}
+
+.recordform .linkedRecords.open {
+    border: 1px solid #7EACB1;
+    border-radius: 5px;
+}
+
+.recordform .linkedRecords.close {
+    border-top: 1px solid #7EACB1;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.recordform .linkedRecords > *:first-child {
+    padding-right: 5px;
+}
+
+.recordform .linkedRecords > *:first-child img[data-action="refreshContent"] {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 0px 0px 5px;
+}
+
+.recordform .tableView-linkedRecs > .tableViewData.simple > tbody > tr > th, 
+.recordform .tableView-linkedRecs > .tableViewData.simple > tbody > tr > td{
+    border: 1px solid #C2D4DA;
+}
+/*#endregion*/
+
+/*#region форма в диалоге lightbox*/
+
+.dialog.lightbox .recordform > .expandingBlock {
+    margin-bottom: 0;
+}
+
+.dialog.lightbox > .title {
+    padding: 2px 7px;
+}
+
+.dialog.lightbox .recordform .formContent{
+    min-height: 100px;
+    overflow: auto;
+}
+/*#endregion*/
+
+#evalResult .exec-time-label {
+    font-size: 0.9em;
+    color: gray;    
+}
+#evalResult i.fa,
+#evalResult i.fas,
+#evalResult i.fab,
+#evalResult i.icon {
+    padding-right: 3px;
+}

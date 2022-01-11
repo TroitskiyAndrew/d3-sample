@@ -1,0 +1,928 @@
+@charset "utf-8";
+
+/*#region appelem*/
+.appelem {
+    display: inline-block;
+}
+.appelem > i.fa,
+.appelem > i.fas,
+.appelem > i.fab,
+.appelem > i.icon {
+    margin-right: 5px;
+}
+
+
+.appelem img {
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.appelem-gotosettings {
+    background-image: url("/Content/img/settings.png");
+    background-repeat: no-repeat;
+    background-position: 0 49%;
+    padding-left: 25px;
+}
+
+.appelem-gotosettings, .appelem-appusers {
+    color: gray;
+    text-decoration: none;
+}
+
+.appelem-gotosettings span, .appelem-appusers span{
+    border-bottom: 1px solid gray;
+}
+
+.appelem-gotosettings:hover, .appelem-appusers:hover {
+    color: black;
+}
+
+.appelem-gotosettings:hover span, .appelem-appusers:hover span {
+    border-bottom-color: black;
+}
+
+.appelem-notification {
+    color: gray;
+}
+
+.appelem-notification > .caption {
+    cursor: default;
+    border-bottom: 1px solid gray;
+}
+
+.appelem-notification > .notifCounter {
+    right: 77px;
+    top: -5px;
+}
+/*#endregion*/
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
+.border {
+    border: solid 1px silver;
+    padding: 1px;
+}
+
+.noborder {
+    border: 0;
+}
+
+.colorPicker-picker, .colorPicker-picker-read-only {
+    height: 16px;
+    width: 16px;
+    padding: 0 !important;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+.colorPicker-picker {
+    background: url(img/arrow.gif) no-repeat top right;
+    cursor: pointer;
+    line-height: 16px;
+}
+
+.placeholder {
+    color: #A9A9A9;
+}
+
+input:-moz-placeholder {
+    color: #A9A9A9;
+}
+
+/*#region valueSelector*/
+.valueSelect {
+    cursor: pointer;
+    float: left;
+    border-bottom: 1px dotted blue
+}
+
+.valueSelect:hover {
+    background-color:gainsboro;
+}
+
+.valueSelect .header {
+    float: left;
+}
+
+.valueSelect .buttonContainer {
+    float: left;
+    margin-left: 5px;
+    padding-top: 3px;
+}
+
+.ValueListAndHint {
+    float: left;
+}
+
+.ValueListAndHint .removeButton{
+    margin: 3px 5px 0px 5px;
+}
+
+/*#endregion*/
+
+[sb-widget="ColumnDefValueEditor"] > * {
+    vertical-align: top;
+}
+
+[sb-widget="valueSelectorEditor"], .value-editor_date-time {
+    display: inline-block;
+}
+
+[sb-valueeditor=DateEditor] table {
+    border-spacing: 0;
+}
+
+.welcome-message {
+    margin:  0px auto 15px auto; 
+    border: 1px solid #6cb7ff; 
+    max-width: 850px; 
+    padding: 5px 5px 5px 15px; 
+    border-radius: 15px;
+    background: rgb(239,247,249); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZWZmN2Y5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTklIiBzdG9wLWNvbG9yPSIjZWFmOWZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTglIiBzdG9wLWNvbG9yPSIjZWFmOGZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iODUlIiBzdG9wLWNvbG9yPSIjZWFmOWZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U2ZjBmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(-45deg,  rgba(239,247,249,1) 0%, rgba(234,249,255,1) 19%, rgba(234,248,255,1) 58%, rgba(234,249,255,1) 85%, rgba(230,240,247,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(239,247,249,1)), color-stop(19%,rgba(234,249,255,1)), color-stop(58%,rgba(234,248,255,1)), color-stop(85%,rgba(234,249,255,1)), color-stop(100%,rgba(230,240,247,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg,  rgba(239,247,249,1) 0%,rgba(234,249,255,1) 19%,rgba(234,248,255,1) 58%,rgba(234,249,255,1) 85%,rgba(230,240,247,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg,  rgba(239,247,249,1) 0%,rgba(234,249,255,1) 19%,rgba(234,248,255,1) 58%,rgba(234,249,255,1) 85%,rgba(230,240,247,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg,  rgba(239,247,249,1) 0%,rgba(234,249,255,1) 19%,rgba(234,248,255,1) 58%,rgba(234,249,255,1) 85%,rgba(230,240,247,1) 100%); /* IE10+ */
+    background: linear-gradient(135deg,  rgba(239,247,249,1) 0%,rgba(234,249,255,1) 19%,rgba(234,248,255,1) 58%,rgba(234,249,255,1) 85%,rgba(230,240,247,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff7f9', endColorstr='#e6f0f7',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+}
+
+/*#region используются на странице инструкции к приложению feedback*/
+.note {
+    padding-top: 5px;
+    border-bottom: 1px dotted #666666;
+    color: #666666;
+}
+
+.spoil > .title {
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+.spoil.close > .title {
+    background: url("/Content/img/expand_plus.gif") 0px 3px no-repeat;
+}
+
+.spoil.open > .title {
+    background: url("/Content/img/expand_minus.gif") 0px 3px no-repeat;
+}
+/*#endregion*/
+
+.highlight {
+    font-weight: bolder;
+    color: #0D89EB;
+}
+
+tr.field > td { /*для филдов в простом виджите формы (импорт данных из CSV)*/
+    padding-bottom: 10px;
+}
+
+/*#region FileManager*/
+
+.FileManager .CurrPath {
+    font-size: 18px;
+}
+
+.FileManager .CurrPath a {
+    text-decoration: none;
+    color: #4183C4;
+}
+
+.FileManager .CurrPath a:hover {
+    text-decoration: underline;
+}
+
+.FileManager .Content .toolbar {
+    padding: 5px;
+    border-bottom: 1px solid #D8D8D8;
+    background: #f6f6f6;
+    background: -moz-linear-gradient(top,  #f6f6f6 0%, #d8d8d8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d8d8d8));
+    background: -webkit-linear-gradient(top,  #f6f6f6 0%,#d8d8d8 100%);
+    background: -o-linear-gradient(top,  #f6f6f6 0%,#d8d8d8 100%);
+    background: -ms-linear-gradient(top,  #f6f6f6 0%,#d8d8d8 100%);
+    background: linear-gradient(to bottom,  #f6f6f6 0%,#d8d8d8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#d8d8d8',GradientType=0 );
+}
+
+.FileManager .Content textarea {
+    max-height: 500px;
+}
+
+.FileManager table.DirTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.FileManager table.DirTable > thead > tr > td {
+    background-color: #EAEAEA;
+    border-bottom: 1px solid #D8D8D8;
+    color: #999;
+    font-weight: normal;
+    padding: 0.5em 0.3em;
+    text-align: left;
+}
+
+.FileManager table.DirTable > tbody > tr > td {
+    background: #f8f8f8;
+    background: -moz-linear-gradient(top,  #f8f8f8 0%, #efefef 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#efefef));
+    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#efefef 100%);
+    background: -o-linear-gradient(top,  #f8f8f8 0%,#efefef 100%);
+    background: -ms-linear-gradient(top,  #f8f8f8 0%,#efefef 100%);
+    background: linear-gradient(to bottom,  #f8f8f8 0%,#efefef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#efefef',GradientType=0 );
+    border-bottom: 1px solid #E1E1E1;
+    color: #484848;
+    padding: 0.5em 0.3em;
+}
+
+.FileManager table.DirTable > tbody > tr > td > .tools {
+    display: none;
+    float: right;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.FileManager table.DirTable > tbody > tr > td:hover > .tools {
+    display: inline-block;
+}
+
+.FileManager table.DirTable > tbody > tr > td > .tools > * ~ *{
+    margin-left: 5px;
+}
+
+.FileManager table.DirTable > tbody > tr > td > a {
+    text-decoration: none;
+    display: block;
+    color: #4183C4;
+}
+
+.FileManager table.DirTable > tbody > tr > td > a:hover {
+    text-decoration: underline;
+}
+
+.FileManager .Footer{
+    padding: 5px;
+    background: #EAEAEA;
+    border: 1px solid #D8D8D8;
+}
+
+.FileManager .Footer > *{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.FileManager .Footer > * ~ *{
+    margin-left: 10px;
+}
+
+.FileManager .Footer > .sep{
+    max-width: 0px;
+    border-left: 2px groove #CCC;
+    height: 15px;
+}
+
+.FileManager .Footer input[type=text]{
+    width: 150px;
+}
+.FileManager > .Footer button{
+    margin-left: 5px;
+}
+
+
+/*#endregion*/
+
+/*#region оформление selectable элементов*/
+.selectableRoot .selectable.selected {
+    outline: 2px #7eacb1 solid;
+}
+/*#endregion*/
+
+/*чтоб текст ед.изм был чуть сдвинут от редактора*/
+span.unitName {
+    margin-left:1px;
+}
+
+a.rec-link {
+    color: #3072C4;
+    text-decoration: none;
+}
+.dxgvControl_Glass a.rec-link {
+    color: #3072C4; /*ещё раз, чтоб перекрытие DevExpr перебить*/
+}
+a.rec-link:hover {
+    text-decoration: underline;
+}
+
+/*#region value-item Элементы выбора в различных диалогах*/
+.value-item:hover{
+    background-color: var(--hover-color);
+	/* Скопировал стиль ниже и коммент из предыдущей редакции */
+	height: 100%; /*специально для оперы, т.к. она сука тупая*/ 
+}
+.value-item.s-selected {
+    background-color: var(--selected-item);
+}
+
+.value-item{
+    display: block;
+    text-align: left;
+    cursor: pointer;
+}
+
+.value-item>i{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.value-item .divHelpHint {
+    float: right;
+    margin-top: 3px;
+}
+
+.value-item span {
+    padding-right: 1px;
+}
+
+/*#endregion*/
+
+/*#region dialog-select-value Диалог выбора иконок и текстовых значений*/
+.dialog-select-value{
+    border: 2px solid;
+    border-color: var(--main-border-color);
+    border-radius: 15px;
+    background-color: white;
+    padding: 10px;
+    margin: 5px;
+	position: absolute;
+    --selected-color:var(--main-icon-color);
+}
+.ValueListAndHint .dialog-select-value{
+    display:none
+}
+
+.dialog-select-value .input-group{
+    display:block;
+    margin-top: 3px
+}
+
+.dialog-select-value input{
+    width: 100%;
+}
+
+.dialog-select-value .values-holder{
+    text-align: center;
+	overflow-y: auto;
+    max-height: calc(100vh - 15em);
+}
+
+.dialog-select-value .values-group{
+    text-align: left;
+	white-space: normal;
+	max-width: 22em;
+	overflow-y: auto;
+}
+.dialog-select-value .values-group.icons-group{
+    max-height: 250px;
+}
+
+/* Чтобы  ширина диалога выбора иконки на вкладке Последние использованные не была меньше других при недостаточном наполнении, задаем всем группам с иконками точную ширину */
+.dialog-select-value .values-group.icons-group{
+    width: 22em;
+}
+/* Чтобы диалог выбора иконки на вкладке Последние использованные не был пустым по высоте, задаем минимальную высоту группы last-used */
+.dialog-select-value .values-group[data-tab-name='last-used']{
+    min-height: 16em;
+}
+
+.dialog-select-value .values-group:not(.icons-group) > .value-item,
+.dialog-select-value .values-holder > .value-item{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.dialog-select-value .values-group:not(.icons-group) > .value-item,
+.dialog-select-value .values-holder > .value-item{
+    min-width: 18em;
+}
+
+
+.dialog-select-value .values-group.icons-group .value-item{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7em;
+    height: 1.7em;
+    padding: 3px;
+    margin: 0px;
+}
+
+.dialog-select-value .values-group>.value-item:hover:not(.values-group[data-tab-name='last-used']>.value-item)>i{
+    color: var(--selected-color) ;
+}
+
+.dialog-select-value .value-item img{
+    padding:2px;
+    vertical-align: middle;
+    text-align: center;
+    max-width: 28px;
+    max-height: 28px;
+}
+
+.dialog-select-value .tab i{
+    padding:3px;
+    vertical-align: middle;
+    font-size: 1.3em;
+}
+
+.dialog-select-value .values-group>.groupName{
+    padding-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    background-color: #eee;
+}
+.dialog-select-value .tabs-bar{
+    margin-top: 3px;
+    text-align: center;
+    max-width: 22em;
+}
+.dialog-select-value .tab{
+    display: inline-block;
+    text-align: center;
+    padding-left: 1px;
+    padding-right: 1px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.dialog-select-value .tab:hover{
+    border-bottom: 3px solid var(--main-icon-color);
+}
+.dialog-select-value .tab.s-selected{
+    border-bottom: 3px solid black;
+  
+}
+
+.dialog-select-value .tab.s-selected > i {
+    color: black;
+  
+}
+.dialog-select-value .tab + .tab {
+    margin-left: 2px;
+}
+
+.dialog-select-value .colors-bar{
+    padding: 2px;
+    margin-top: 10px;
+    text-align: center;
+}
+.dialog-select-value .color-item{
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 2px;
+    padding-right: 2px;
+    cursor: pointer;
+  
+}
+.dialog-select-value .color-item > i{
+    padding:3px;
+    vertical-align: middle;
+    font-size: 1.3em;
+}
+
+.dialog-select-value .color-item.color-selector.s-no-color > i{
+    background: linear-gradient(45deg,blue 40%,red 40%, red 60%, green 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dialog-select-value .color-item.s-selected{
+    border-bottom: 3px solid  var(--selected-color);
+}
+
+
+/*#endregion*/
+
+/*#region dialog-column-filter Диалог фильтра для колонки в табличном представлении*/
+.dialog-column-filter{
+    min-width: 220px;
+    min-height: 150px;
+    height: 350px;
+    width: 200px;
+}
+
+.dialog-column-filter .content{
+    margin: 3px 3px 0px 3px;
+    /*Контент внутри дилога фильтра делаем флекс, чтобы можно было сделать единственным сжимаемым элементом - список итемов в .values-holder._multi-select*/
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-column-filter .content > ._expandable{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 32px;
+}
+
+.dialog-column-filter .content > ._expandable > .block-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-column-filter .content > ._expandable > .block-head{
+    height: auto;
+    border: none;
+    margin: 0;
+}
+
+.dialog-column-filter .content > ._expandable.s-applied > .block-head{
+    font-weight: bold;
+}
+
+.dialog-column-filter .content ._toggler{
+    padding: 6px 5px;
+    line-height: 1.2;
+}
+.dialog-column-filter .content ._toggler:hover{
+    cursor: pointer;
+}
+
+/* Диалог фильтра обычно меньше по ширине и кнопки меньшего размера смотряться уместнее */
+.dialog-column-filter > .buttonsBar > button {
+	min-width: 5em;
+}
+
+/* Диалоге фильтра кнопки могут быть расположены прямо под контентом. Снизу и слева есть паддинги 2px от края диалога. Сверху добавляем марджин 2px стандартным 5px и получаем 7 */
+.dialog-column-filter > .buttonsBar {
+    padding-top: 7px;
+}
+/* Отступы между кнопками равны отступам buttonsBar от краев */
+.dialog-column-filter > .buttonsBar > button + button {
+    margin-left: 7px;
+}
+
+.dialog-column-filter .values-holder{
+    overflow-y: auto;
+}
+
+.dialog-column-filter .content input[name=searchTerm]{
+    width: 100%;
+    margin: 3px 0;
+}
+/* В основных стилях для решения какой-то баги в Опере value-item под ховером приписана 100% высота. Здесь, за счет использования флекса она проявяется. Локально ее отменяем. */
+.dialog-column-filter .value-item:hover {
+    height: auto;
+}
+
+.dialog-column-filter .values-holder > .value-item{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding-left: 3px;
+}
+
+
+.dialog-column-filter .values-holder > .value-item > span{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.dialog-column-filter .values-holder._multi-select > .value-item:before,
+.dialog-column-filter .content > ._expandable ._toggler:before{
+    font-family: "Font Awesome 5 Free";
+    color: var(--main-icon-color);
+    font-size: 1rem;
+    line-height: 1;
+    margin-right: 5px;
+    font-weight: 900;
+}
+
+
+.dialog-column-filter .content > ._expandable:not(.s-collapsed) ._toggler:before{
+    content: "\f107";
+    margin: 0 5px;
+}
+
+.dialog-column-filter .content > ._expandable.s-collapsed ._toggler:before{
+    content: "\f105";
+    margin: 0 6px;
+}
+
+.dialog-column-filter .values-holder._multi-select > .value-item:before{
+    font-weight: 400;
+}
+
+.dialog-column-filter .values-holder._multi-select > .value-item.s-selected:before{
+    content: "\f14a";
+}
+
+.dialog-column-filter .values-holder._multi-select > .value-item:not(.s-selected):before{
+    content: "\f0c8";
+}
+
+.dialog-column-filter .content > .dropdown-menu{
+    display: block;
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 3px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 3px;
+    margin-top: 3px;
+    width: 100%;
+    /* На краях диалога есть элементы для растижения с индексом 90. Если этот индекс не перекрыть, то выпадающее меню будет схлопываться */
+    z-index: 91;
+    line-height: 1.2;
+}
+
+.dialog-column-filter .content > .dropdown-menu:empty {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dialog-column-filter .dropdown-menu li{
+    overflow: hidden;
+}
+
+.dialog-column-filter ul.dropdown-menu > li.dropdown::after {
+    float: right;
+    position: static;
+    margin-right: -17px;
+}
+
+.dialog-column-filter  li.dropdown.s-selected {
+    background: inherit;
+}
+
+.dialog-column-filter  li.dropdown.s-selected:hover,
+.dialog-column-filter  li.dropdown.s-opened {
+    background: var(--hover-color);
+}
+
+.dialog-column-filter  li.dropdown.s-selected > span {
+    font-weight: bold;
+}
+.dialog-column-filter  li.dropdown.s-selected > i {
+    color: black;
+}
+
+.dialog-column-filter .props-list {
+    margin: 0 0 0 3px;
+}
+
+.dialog-column-filter .props-list {
+    margin: 0 0 0 3px;
+}
+.dialog-column-filter .props-list td.caption{
+    min-width: 0;
+    font-weight: normal;
+}
+
+.dialog-column-filter .alert-too-much{
+    font-size: 1em;
+}
+
+.dialog-column-filter .filter-contains .valmsgplace{
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.dialog-column-filter .filter-values .input-group{
+    position: relative;
+}
+
+.dialog-column-filter .filter-values .input-group .clear-button{
+    position: absolute;
+    top: 5px;
+    right: 3px;
+}
+.dialog-column-filter .filter-values .input-group .clear-button:hover{
+    background: none; 
+}
+
+.dialog-column-filter .filter-values .input-group .clear-button:before{
+    font-family: "Font Awesome 5 Free";
+    color: var(--main-icon-color);
+    font-size: 1em;
+    font-weight: 900;
+    content: "\f00d";
+}
+.dialog-column-filter .filter-values .block-content > .actions-container{
+    display: flex;
+    align-items: center;
+}
+
+.dialog-column-filter .filter-values .selection-counter {
+    font: 10px Tahoma,Geneva,sans-serif;
+    color: #656566;
+    margin-left: auto;
+    margin-right: 2px;
+}
+
+.dialog-column-filter .content .user-hint {
+    font: 12px Tahoma, Geneva, sans-serif;
+    padding: 0 0 0 7px;
+    color: #656566;
+    font-style: italic;
+}
+
+
+/*#endregion*/
+
+/*#region mColorPicker Диалог выбора цвета*/
+
+#mColorPicker {
+    border: 1px solid var(--main-border-color);
+    color: #fff;
+    z-index: 999998;
+    font-size: 12px;
+    font-family: times
+}
+
+#mColorPicker .mPastColor {
+    height: 18px;
+    width: 18px;
+    border: 1px solid #ccc;
+    float: left;
+    cursor: pointer
+}
+
+#mColorPicker #colorPreview {
+    height: 50px
+}
+
+#mColorPicker .mNoLeftBorder {
+    border-left: 0
+}
+
+#mColorPicker .mClear {
+    clear: both
+}
+
+#mColorPicker #mColorPickerWrapper {
+    z-index: 999999
+}
+
+#mColorPicker #mColorPickerImg {
+    height: 128px;
+    border: 0;
+    cursor: crosshair
+}
+
+#mColorPicker #mColorPickerImgGray {
+    height: 18px;
+    width: 191px;
+    border: 0;
+    cursor: crosshair;
+}
+
+#mColorPicker #mColorPickerInput {
+    border: solid 1px #ccc;
+    border-width: 0 1px 0 0;
+    font-family: monospace;
+    font-size: 10pt;
+    width: 58px;
+    height : 100%
+}
+
+
+#mColorPicker  #mColorPickerInput:focus-visible {
+    outline-style: none;
+}
+
+#mColorPicker #mColorPickerImgGrid {
+    border: 0;
+    height: 20px;
+    width: 20px;
+    vertical-align: text-bottom
+}
+
+
+#mColorPicker #mColorPickerFooter {
+    background-color: white;
+    height: 26px;
+    display: flex;
+}
+
+#mColorPicker #mColorPickerFooter > .mColorShower {
+    width: 100%;
+    cursor: pointer
+}
+
+#mColorPicker #mColorPickerTransparent {
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom : 1px solid #ccc;
+    cursor:pointer
+}
+
+#mColorPicker #mColorPickerTransparent > span{
+    font-size:16px;
+    color:#000
+}
+
+/*#endregion*/
+
+/*#region Diagramm*/
+
+.diagramContainer{
+    padding: 11px;
+    position: relative;
+    display: flex;
+  }
+  
+  .diagramElem {
+      overflow: hidden;
+      width: 100%;
+  }
+  
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+  
+  .chart:hover {
+    cursor: pointer;
+    /* stroke: black;
+  stroke-width: .5px; */
+  }
+  
+  .back-line {
+    opacity: .5;
+  }
+  
+  
+  
+  .map-slider {
+    position: absolute;
+    border: solid 1px black;
+    cursor: grab;
+  }
+
+  .map-slider.drag-moving{
+      cursor: grabbing;
+  }
+  
+  .curtain {
+    position: absolute;
+    background-color: gray;
+    opacity: .2;
+  }
+  
+  .mover {
+    position: absolute;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: col-resize;
+  }
+
+  .mover._vertical{
+    cursor: row-resize;
+  }
+    
+  .mover::before {
+    content: "\f7a5";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    background-color: #d4c5c5;
+    border: solid 1px gray;
+    padding: 3px;
+    border-radius: 3px;
+    color: gray;
+  }
+  
+  .mover._vertical::before {
+    transform: rotate(90deg);
+  }
+
+  .diagram-separator{
+      opacity: .3;
+  }
+
+/*#endregion*/

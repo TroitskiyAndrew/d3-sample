@@ -1,0 +1,3332 @@
+@charset "utf-8";
+
+:root {
+  --main-border-color: #7eacb1;
+  --simple-border-color: #C2D4DA;
+  --main-icon-color: #666;
+  --top-toolbar-icon-color: cornflowerblue;
+  --simple-table-head: #f0f0f0;
+  /* Цвет фона элемента интерфейса в состоянии "выбрано" */
+  --selected-item: #cce5ff;
+  /* Цвет фона элемента интерфейса при наведении мышки */
+  --hover-color: #eee;
+  --row-hover-color: #E0FFFF;
+  /* цвет заголовка формы */
+  --form-title-color: hsla(210, 69%, 94%, 1);
+  --dialog-title-color: hsla(210, 69%, 94%, 1);
+  
+}
+
+
+html {
+    height: 100%;
+}
+
+body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    height: auto !important;
+    min-height: 100%;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/*чтоб отступ в списках был поадекватнее*/
+ul {
+    padding-left: 22px;
+}
+
+
+
+/*#region jQueryUI ovveride*/
+.ui-widget {
+    font-size: inherit;
+}
+
+.ui-button .ui-button-text {
+    line-height: 1.4;
+}
+
+.ui-widget-overlay {
+    z-index: 0;
+}
+/*#endregion*/
+
+/*#region layout*/
+/*#region шапка*/
+#sb_header {
+    z-index: 2;
+    padding: 0 30px;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    border-bottom: 1px solid #75A6CF;
+    background: hsla(210, 69%, 94%, 1);
+}
+
+#sb_header > .carcass {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+#sb_header > .carcass > tbody {
+    vertical-align: top;
+}
+
+#sb_header > .carcass #logo{
+    width: 1px;
+    padding: 5px 10px 5px 0px;
+}
+    
+#sb_header > .carcass #appName {
+    width: 1px;
+    padding: 6px 0px 5px 0px;
+    line-height: 1;
+}
+    
+#sb_header > .carcass #appName h1 {
+    margin: 0px;
+    font-size: 20px;
+}
+    
+#sb_header > .carcass #appName a {
+    white-space: nowrap;
+    text-decoration: none;
+    color: #666;
+    font-weight: normal;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    display: block;
+    max-width: 700px;
+    min-width: 50px;
+}
+    
+#sb_header > .carcass #icons {
+    white-space: nowrap;
+	display: flex;
+}
+
+/*тюнинг fa иконок*/
+#sb_header i.fa,
+#sb_header i.fas,
+#sb_header i.fab,
+#sb_header i.icon {
+    color: var(--top-toolbar-icon-color);
+	vertical-align: middle;
+}
+  
+#sb_header > .carcass #icons > div {
+    display: inline-block;
+    margin-left: 7px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    border: 1px solid transparent;
+    vertical-align: inherit;
+}
+
+
+#sb_header > .carcass #icons > *.asButton {
+    cursor: pointer;
+    padding: 5px 0px;
+    width: 31px;
+    text-align: center;
+}
+
+#sb_header > .carcass #icons > *.asButton:hover {
+    background: #d8e9ff;
+    border-radius: 5px;
+    border: 1px outset #ffffff;
+}
+#sb_header  .clipBoard-State.empty > i{
+    font-weight: 400;
+}
+
+#sb_header > table.carcass>tbody>tr>td {
+    vertical-align:middle;
+}
+    
+#sb_header > .carcass #user {
+    width: 1px;
+    text-align: right;
+    cursor: default;
+    padding: 5px 0px;
+    white-space: nowrap;
+}
+    
+#sb_header > .carcass #user > div {
+    white-space: nowrap;
+}
+
+#sb_header > .carcass #user > .appelem-user img {
+    vertical-align: text-bottom;
+}
+/*#endregion*/
+
+#content {
+    padding: 38px 30px 25px 30px;
+    overflow: visible;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#app_main {
+    /*сделано, что бы широкий контент (грид) растягивал форму и страницу*/
+    display: inline-block;
+    min-width: 100%; /*что бы контейнер для был на всё окно браузера*/
+    margin-right: 10px; /*чтоб при растягивании окна широким контентом, чтоб справа был отступ от окна браузера*/
+}
+
+
+#footer{
+    color: #A1A1A1;
+    position: absolute;
+    bottom: 0.3em;
+    left: 30px;
+}
+
+#footer > *{
+    vertical-align: middle;
+}
+/*#endregion*/
+
+/*#region общие классы */
+.floatLeft{
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.inlineTable {
+    display: inline-table;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.childrenAlign_Middle > * {
+    vertical-align: middle;
+}
+
+.borderCollapse {
+    border-collapse: collapse;
+}
+
+.borderBox {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.clear {
+    clear: both;
+}
+
+
+a img {
+    border: none;
+}
+
+/* для серенького текст (нередактируемые данные)  */
+.noEditData {
+     color: gray;
+}
+
+/* делать серый текст */
+.grayText {
+     color: gray;
+}
+
+.blackColor {
+    color: Black;
+}
+.whiteColor {
+    color: White;
+}
+
+
+/*общий класс для регулирования прозрачнасти при hover/unhover*/
+.brighterOnHover {
+    opacity: 0.35;
+    filter: alpha(opacity=35);
+}
+
+.brighterOnHover:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.disabled {
+    opacity: 0.45;
+    filter: alpha(opacity=45);
+}
+
+.sOverlay {
+    background-color: #aaaaaa;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.sNotifMessage {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    background-color: rgb(240, 247, 255);
+    border-radius: 5px;
+    border: 1px solid var(--main-border-color);
+    padding: 5px;
+    z-index: 1;
+}
+
+/*область для служебной разметки*/
+#sys {
+    display: none;
+}
+
+.item-template, [sb-item-deleted]{
+    display: none;
+}
+
+/*дефолтное оформление элементов контейнеров (синяя рабочка, скругленные углы). Например для fieldset*/
+.app-block {
+    border: 1px solid var(--main-border-color) !important;
+    border-radius: 5px;
+}
+
+fieldset > legend > * {
+    margin: 0px;
+}
+
+/*Общее оформление шрифтовых иконок*/
+i.fa,
+i.fas,
+i.fab,
+i.icon {
+  color: var(--main-icon-color);
+  font-size: 1rem;
+}
+/* иконка - как спец значок/буква (символ юникода)  */
+i.icon {
+    font-weight: bold; /*жирная вроде получше*/
+    /*!!!чтоб уравнять её высоту FA иконками! чтоб не прыгала высота букв и как следствие смещение сверху других иконок, при добавлении нашей!
+      проявлялось на кнопочке А в заголовке окна */
+    line-height: 1; 
+    font-style: normal;
+}
+
+/*#endregion*/
+
+/*#region input, select, textarea, button*/
+input, button, select, textarea {
+    margin: 0;
+}
+
+input[type=text], input[type=password], input[type=number], input[type=search], input[type=time], select, textarea {
+    border: 1px #7F9DB9 solid;
+    padding: 2px;
+    
+    font-size: 1em;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input[type=time] {
+    padding: 0 0 0 2px;
+}
+
+input[type=number]._spins-only-on-focus:hover:not(:focus-visible)::-webkit-inner-spin-button,
+input[type=number]._spins-only-on-focus:hover:not(:focus-visible)::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"]._spins-only-on-focus:not(:focus-visible) {
+  -moz-appearance: textfield;
+}
+
+/*#region checkbox*/
+input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+}
+
+
+input[type=checkbox]:focus:before {
+    outline-color: #4D90FE;
+    -ms-outline-offset: -2px;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
+input[type=checkbox].global-group-checkbox-part:after {
+    content: " ";
+
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    top: 3px;
+    left: 3px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    
+    background: #5397FD;
+    
+    -webkit-box-shadow: inset 1px 1px 1px #343434;
+    box-shadow: inset 1px 1px 1px #343434;
+}
+
+/*#endregion checkbox*/
+
+/*стили такие же как у инпуты (за исключение цвета границ)*/
+[sb-valueeditor=DisplayLabel] {
+    border: 1px solid transparent;
+    padding: 2px;
+}
+
+/*#region sb-valueeditor="DisplayLabel" [data-type=num]*/
+[sb-valueeditor=DisplayLabel][data-type=num] {
+    width: 121px; /*ширину задаем такую же как и у инпута для ввода чисел (- бордюры, - внутренние отступы)*/ 
+    text-align: right;
+    white-space: nowrap;
+}
+/*#endregion*/
+
+tr[class*="dxgvFilterRow"] input[type=text], tr[class*="dxgvFilterRow"] input[type=password], tr[class*="dxgvFilterRow"] select, tr[class*="dxgvFilterRow"] textarea {
+    padding: 0;
+}
+
+textarea.invalid-value, select.invalid-value, input.invalid-value {
+    border: 1px red solid;
+}
+/* спец кейс для реф-эдитора */
+.invalid-value > input {
+    border: 1px red solid;
+}
+
+/* как выдялется поле ввода имеющее фокус */
+input[type=text]:focus, input[type=time]:focus, input[type=password]:focus, input[type=search]:focus, select:focus, textarea:focus{
+    background: rgb(255, 255, 200);
+}
+
+select{
+    color: #000;
+    padding: 1px;
+}
+
+select option{
+    color: #000;
+    background: #FFF;
+}
+
+option[value=""]{
+    color: #A9A9A9;
+}
+
+select.update-error {
+    color : Red;
+    border-color: Red;
+}
+
+/*#region CKEditor*/
+.cke {
+    border: 1px #7F9DB9 solid !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.cke_top {
+    border-bottom: 1px solid #7F9DB9 !important;
+}
+
+.cke_bottom {
+    background: #f4f4f4 !important;
+}
+
+.cke_resizer {
+    border-right-color: #4c4c4c !important;
+}
+/*#endregion*/
+
+/*#endregion*/
+
+
+/*рамка для окна*/
+._contentBorders > * {
+    border: 1px solid rgb(126, 172, 177);
+    border-top: none;
+    border-bottom: none;
+}
+._contentBorders > *:first-child {
+    border-top: 1px solid rgb(126, 172, 177);;
+}
+._contentBorders > *:last-child {
+    border-bottom: 1px solid rgb(126, 172, 177);;
+}
+
+
+/*окно для форм, табл. представлений*/
+._window {
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px 5px 0px 0px;
+}
+
+div.dialog > div.content > *._window {
+    border: none; /*если окно в диалоге - то убираем бордюр. тк он будет у диалога*/
+}
+
+._window > .title, .dialog > .title, .dialog > * > .title {
+    border-bottom: none;
+    min-width: 100%;
+    width: 1px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    -ms-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    display: flex; /*чтоб содерж (кнопки) выровнять как надо*/
+}
+._window > .title{
+    background-color: var(--form-title-color);
+}
+
+.dialog > .title, .dialog > * > .title{
+    background-color: var(--dialog-title-color);
+}
+/*заголовок в диалоге и табличном представлении*/
+.block-head > *,
+.title > * {
+    display: inline-block;
+}
+.title > h2.title-caption {
+    font-size: 15px;
+    font-weight: bold;
+    color: #666;
+    /*чтоб одностроч был и если не входит ...*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    flex: 1; /*!чтоб текст занимал свободное место*/
+    
+    /*white-space: nowrap; убрал тк длинный текст будет ниже кнопки и вылазит за окно... */
+    margin: 2px 7px; /*высота заголовка и отступы перед*/
+}
+.dialog > .title > h2.title-caption {
+    font-size: 1em;
+    /*марджины чтоб подогнать высоту всего title как в window*/
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+/* тулбары в заголовке */
+div.toolbar > * {
+    display: inline-block;
+}
+
+div.toolbar > * {
+    /*паддинг сверху - чтоб отодвинуть на середину полосы загловка. пришлось явной цифрой, тк при float токо так получается*/
+    /*паддингами чтоб при ховере область подсветки кнопки была больше*/
+    /*паддинги слва/справа чтоб расстояния между кнопками были*/
+    padding: 0.4em;
+    text-decoration: none; /*и не подчеркнуто*/
+}
+
+div.toolbar > a i {
+    font-size: 0.9rem;
+}
+div.toolbar > *:hover > i {
+    color: #000; /*при наведении на элемент тулбара перекрашиваем иконку в черный цвет*/
+}
+div.toolbar-right {
+    float:right;
+}
+.title > div.toolbar-left {
+    float:left;
+}
+
+
+/*иконка из FA хз почему нет в их стилях*/
+.fa-refresh:before {
+    content: "\f021";
+}
+
+
+
+/*#region акшины кнопки*/
+
+.action-link { /*стилизация текста под ссылка-акшн (для запуска какого либо экшина)*/
+    color: blue;
+    border-bottom: 1px dotted blue;
+    cursor: pointer;
+}
+
+
+
+/*элемент - акшн по умолчанию*/
+div[data-action] {
+    cursor: pointer;
+    white-space:nowrap;
+    display: inline-block;
+}
+th[data-action] {
+    cursor: pointer; /*может быть на заголовке табл*/
+}
+div[data-action].disabled {
+    cursor: default;
+}
+div[data-action]:hover:not(.brighterOnHover), a.action-url:hover{
+    background-color: var(--hover-color);
+}
+
+
+/*заголовок акшина в стиле акшн-линк*/
+.btns-ligth>div[data-action] > span  {
+    color: blue;
+    border-bottom: 1px dotted blue;
+}
+
+.btns-ligth>div[data-action]>i:not(i:last-child),
+.btns-ligth>div[data-action]>img:not(img:last-child),
+.btns-ligth>a.action-url>i:not(i:last-child),
+.btns-ligth>a.action-url>img:not(img:last-child){
+    margin-right:3px;/*содержимое(кроме последнего) акшн эдементов должно иметь отступы справа*/
+}
+
+/*акшн эдементы делаем flex-контейнерами. Задаем высоту и центрирование*/
+.btns-ligth>div[data-action],
+.btns-ligth>a.action-url {
+    height: 1.6em;
+	display: inline-flex;
+    align-items: center;
+	vertical-align: middle;
+	padding: 2px;
+    line-height: 1;
+}
+
+.btns-ligth > * + * {
+    margin-left: 2px;
+}
+
+.grid-cell .actions-container.horizontal>div[data-action],
+.grid-cell .actions-container.horizontal>a.action-url {
+	padding-top: 0;
+    padding-bottom: 0;
+}
+
+.input-group>div[data-action],
+.input-group>a.action-url {
+	padding: 0px 2px 2px 2px;
+}
+.input-group > div[data-action] > i,
+.input-group > div[data-action] > img,
+.input-group > a.action-url > i,
+.input-group > a.action-url > img{
+	padding-top: 2px;
+}
+
+/*акшн-итем - ссылка, когда акшн-итем - нативный переход по ссылке */
+a.action-url > * {
+    vertical-align: middle;
+}
+a.action-url {
+    white-space: nowrap;
+}
+/*Отключаем подчеркивание текста ссылки в элемента а, чтобы оно не задевало шрифтовую иконку */
+.btns-ligth>a.action-url{
+    text-decoration: none;
+}
+/*Добавляем подчеркивание текста ссылки в элемента а непосредственно на span */
+.btns-ligth>a.action-url>span{
+    text-decoration: underline;
+}
+
+img[data-action],
+i[data-action] {
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.buttonsBar > * {
+    vertical-align: top;
+}
+
+.actions-container  {
+    white-space: nowrap;
+	text-align: left;
+}
+
+.actions-container.vertical>div[data-action],
+.actions-container.vertical>a.action-url{
+	display: flex;/*акшн эдементы в вертикальных контейнерах должны быть расположены вертикально и иметь ширину по содержимому*/
+	max-width: min-content;
+	
+}
+
+
+
+
+
+
+.btn {
+  min-width: 2.15em;
+  min-height: 2.15em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn > * {
+    vertical-align: middle;
+}
+/*сдвигаем span от img*/
+.btn> img + span, .btn > a > img+span {
+    margin-left: 3px;
+}
+
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+}
+
+.btn:active,
+.btn.active {
+  background-color: #cccccc;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn.active,
+.btn:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn[class~="bold"] {
+    font-weight: bold;
+}
+
+.btn-small {
+  padding: 2px 10px;
+  font-size: 11.9px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.btn-mini {
+  padding: 0 6px;
+  font-size: 10.5px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+button.btn-mini > img {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.btn-sb {
+    color: #5F5F5F;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid #E5E5E5;
+    background: rgb(244,250,251) !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(244,250,251,1) 17%, rgba(208,234,228,1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,rgba(244,250,251,1)), color-stop(100%,rgba(208,234,228,1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fafb', endColorstr='#d0eae4',GradientType=0 ) !important; /* IE6-9 */
+    cursor: pointer;
+    display: inline-block;
+    min-width: 16px;
+    padding: 5px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+.btn-sb:hover, 
+.btn-sb:focus {
+    background: rgb(169,228,247); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E5ZTRmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMWJmZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+) !important;
+    background: -moz-linear-gradient(top,  rgba(169,228,247,1) 0%, rgba(17,191,244,1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,228,247,1)), color-stop(100%,rgba(17,191,244,1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(169,228,247,1) 0%,rgba(17,191,244,1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(169,228,247,1) 0%,rgba(17,191,244,1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(169,228,247,1) 0%,rgba(17,191,244,1) 100%) !important; /* IE10+ */
+    background: linear-gradient(top,  rgba(169,228,247,1) 0%,rgba(17,191,244,1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#11bff4',GradientType=0 ) !important; /* IE6-8 */
+    border: 1px solid #84a4c3; 
+    text-shadow: 1px 1px 2px #e0f1ff;
+}
+
+a.btn-sb {
+    text-decoration: none;
+}
+
+.btn-sb.disabled, .btn-sb.disabled:hover, .btn-sb.disabled:focus {
+    outline: none;
+    color: #CCC;
+    border: 1px solid #E5E5E5;
+    background: rgb(244,250,251) !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(244,250,251,1) 17%, rgba(208,234,228,1) 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,rgba(244,250,251,1)), color-stop(100%,rgba(208,234,228,1))) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(244,250,251,1) 17%,rgba(208,234,228,1) 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fafb', endColorstr='#d0eae4',GradientType=0 ) !important; /* IE6-9 */
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.btn-sb.disabled.waiting div {
+    background: url("/Content/Widgets/img/ajax-loader_min2.gif") no-repeat;
+    background-position: left;
+    padding-left: 20px;  
+}
+
+
+/*#endregion*/
+
+/*#region сообщение об успешном сохранении*/
+#savesuccess {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    display: inline-block;
+    font-size: 110%;
+}
+
+#savesuccess h3 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.successTitle {
+    background-color: #E7F9E0;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 10px;
+    color: green;
+    font-family: Arial;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.successContent {
+    padding: 10px;
+    background: #F4F4F4;
+}
+
+.successContent h3 {
+    margin: 10px 0px;
+    color: rgb(107, 107, 107);
+}
+
+.successContent ul {
+    margin: 0px;
+    padding-left: 30px;
+}
+
+.successContent li {
+    padding-top: 10px;
+}
+
+.successContent li a{
+    color: #003DFF;
+}
+/*#endregion*/
+
+/*#region нотификационные сообщения*/
+
+/*оформление ожидания сохранения*/
+.stick {
+    margin: 5px;
+	padding: 15px;
+	min-width: 15em;
+    max-width: 40em;
+	border-radius: 6px;
+	border:1px solid #A7CD10;
+    box-shadow: 2px 2px 4px #00000033;
+    font-size: 1.1em;
+}
+.stick h3 {
+    font-weight: normal;
+    margin: 0px;
+}
+
+/*кнопка закрыть на стикере*/
+.stick > .close {
+    float: right;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #000;
+    opacity: .2;
+    padding: 0 0 0 5px;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;     
+}
+.stick > .close:hover {
+    opacity: .4;
+}
+
+.opacity {
+	background:url("/Content/img/bg.png");
+	color:#F4F4F4;
+}
+
+.next {
+	background:url('/Content/img/bg1.png') repeat-x #FEF6BF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.ajax_query {
+	background-color:#CBECFA;
+	border:1px solid #15A6E3;
+}
+
+.click-ex {
+    width:50px;
+	height:20px;
+	border:1px solid #626262;
+	background:url('/Content/img/pointer.gif') no-repeat left center #7A7A7A;
+	color:#F4F4F4;
+	float:left;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	padding-left:25px;
+	padding-top:10px;
+	margin-right:10px;
+	cursor:pointer;
+}
+
+.ex pre {
+    width:80%;
+}
+
+.opacity {
+	background:url("/Content/img/bg.png");
+	color:#F4F4F4;
+}
+
+.next {
+	background:url('/Content/img/bg1.png') repeat-x #FEF6BF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.last {
+	background-color:#CBECFA;
+	border:1px solid #15A6E3;
+}
+
+.ex pre {width:80%;}
+
+/*----------оформление ожидания сохранения-----------*/
+/*#endregion*/
+
+/*#region expandingBlock*/
+.expandingBlock {
+    margin: 0;
+}
+
+.expandingBlock > *:first-child {
+    cursor: pointer;
+    padding: 0 0 0 20px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.expandingBlock.open > *:first-child {
+    background-image: url("/Content/img/expand_minus.gif");
+}
+
+.expandingBlock.close > *:first-child {
+    background-image: url("/Content/img/expand_plus.gif");
+}
+
+.expandingBlock.block > *:first-child {
+    font-size: 1.4em;
+}
+
+.expandingBlock > *:first-child img[data-action="refreshContent"] {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 0px 0px 5px;
+}
+/*#endregion*/
+
+/*#region ошибки и предупреждения*/
+[data-valmsg-for], .valmsgplace, .formvalmsgplace{
+    font-family: Arial;
+    font-size: 90%;
+    padding: 0px;
+    display: none;
+}
+
+.formvalmsgplace [data-valmsg-for] {
+    font-size: 100%;
+}
+
+/*#region form validation summary*/
+.formvalmsgplace {
+    padding: 5px;
+    color: red;
+    border: 1px solid red;
+    background-color: rgb(255, 240, 240);    
+}
+
+.formvalmsgplace > .title {
+    color: red; 
+    font-weight: bold;
+}
+
+.formContent > .formvalmsgplace {
+    margin: 5px;
+}
+/*#endregion*/
+
+.formContent > .valmsgplace > table {
+    border-collapse: collapse;
+}
+
+.error, .validation-error {
+    color: red;
+}
+
+.validation-warning {
+    color: #FF8C00; 
+}
+
+.validation-error table td, .validation-warning table td{
+    vertical-align: middle;
+}
+
+.validation-error table, .validation-warning table{
+    border-spacing: 0px;
+}
+
+/* для оформления сообщения об ошибке в диалоге результата действия */
+.val-msg-err{
+    font-weight: bold;
+    color: red;
+}
+.val-msg-wrn{
+    font-weight: bold;
+    color: #FF8C00;
+}
+
+
+
+
+.smallSize {
+    font-size: 100%;
+}
+
+.requiredmark.emptyValue {
+    color: red;
+}
+
+.error-inplace > * {
+    vertical-align: middle;
+}
+
+.details {
+    font-family: monospace;
+}
+
+.details > .item + .item:before {
+    content: "↓";
+    color: #6D6D6D;
+    font-size: 18px;
+    line-height: 1;
+    
+    display: block;
+    padding-left: 10px;
+}
+
+.expandingBlock.error-details {
+    border: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-top: 5px;
+}
+
+.expandingBlock.error-details > *:first-child {
+    cursor: pointer;
+    padding: 0 0 0 15px;
+    background-position: 0 center;
+}
+
+.expandingBlock.error-details > *:first-child + * {
+    margin-left: 16px;
+}
+/*#endregion*/
+
+/*#region Диалоговые окна*/
+.dialog {
+    min-width: 300px;
+    max-width: calc(100vw - 5px);
+    min-height: 10px;
+    background-color: white;
+    padding: 2px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    position: absolute;
+    top: -10000px;
+    z-index: auto;
+    
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    /* Бордюр и тень у диалога такие же как у  .dropdown-menu. Изменения вносить в оба места сразу.*/
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dialog._resizable {
+    /* Правый нижний угол должен быть прямым, так как там визуальный элемент, показывающий растягиваемость */
+    border-bottom-right-radius: 0;
+    /* Чтобы содержимое растягиваемого диалога правильно позиционировалось, делаем из него флекс-контейнер с направлением сверху-вних. */
+    display: flex;
+    flex-direction: column;
+}
+
+/*курсор на заголовке перетаскиваемый*/
+.dialog .title.ui-draggable-handle {
+    cursor: move;
+}
+
+/* поясняющий текст в диалоге */
+.dialog-notes {
+    padding: 10px 15px;
+}
+
+.dialog > .content {
+    /*padding: .5em 1em; убрал тк контент сам себе должен выставлять*/
+    background: none;
+    color: #222;
+    overflow: auto;
+}
+
+.dialog > .buttonsBar {
+    -ms-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    white-space: nowrap;
+}
+/* Чтобы в растягиваемом диалоге панель кнопок всегда была прижата к низу, делаем автоматический марджин */
+.dialog._resizable > .buttonsBar {
+    margin-top: auto;
+}
+
+.dialog > .buttonsBar > button {
+    font-weight: bold;
+	min-width: 6em;
+}
+
+.dialog > .buttonsBar > button + button {
+    margin: 0 0 0 .4em;
+}
+
+.overlay {
+    z-index: 1;
+    background: #AAA;
+    -ms-opacity: .3;
+    opacity: .3;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog > .infoDialog-content {
+    margin: 10px;
+}
+table.infoDialog-content td.icon {
+    vertical-align: top;
+}
+table.infoDialog-content td.text {
+    width: 50em;
+    padding-left: 1em;
+}
+/*чтоб заголовки в тексте были адекватны*/
+table.infoDialog-content td.text h4 {
+    margin-top: 0.8em;
+    margin-bottom: 0.1em;
+}
+
+/*для диалога ввода штрих-кода*/
+.proc-barcode-result {
+    max-height: 150px; 
+    overflow: auto;
+    padding: 5px 10px;
+}
+
+/*#region повторная авторизация*/
+.dialog.authorization {
+    max-width: 400px;
+}
+
+.dialog.authorization > .content #loading {
+    margin: 19px;
+    vertical-align: top;
+}
+
+.dialog.authorization > .content #loading img {
+    margin-right: 10px;
+}
+
+.dialog.authorization > .content .formvalmsgplace {
+    margin-bottom: 5px;
+}
+
+.dialog.authorization > .content .props-list .prop-editor-input {
+    padding-right: 0;
+}
+
+.dialog.authorization > .content input {
+    width: 20ch;
+}
+
+.dialog.authorization > .content .props-list > tbody > tr > td {
+    padding-top: 5px;
+}
+
+.dialog.authorization > .buttonsBar {
+    text-align: center;
+}
+
+.dialog.authorization > .buttonsBar button {
+    font-size: 1.4em;
+    width: 180px;
+}
+
+.dialog.authorization .buttonsBar a {
+    color: blue;
+}
+/*#endregion*/
+
+/*#region lightbox*/
+.dialog._lightbox > .content{
+    padding: 0;
+}
+
+/*#endregion*/
+/*#endregion*/
+
+/*#region настройка вида инфо-табличики*/
+.tableInfo {
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid #99c7de;
+}
+
+.tableInfo > tbody > tr:nth-child(odd) {
+    background: #fAfAfA;
+}
+
+.tableInfo > tbody > tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+.tableInfo > tbody > tr > th {
+    background: #D8EBFF;
+    border: 1px solid #99c7de;
+}
+
+.tableInfo > tbody > tr > td, .tableInfo > tbody > tr > th {
+    padding: 5px;
+}
+/*#endregion*/
+
+/*#region общая настройка buttonPanel*/
+.buttonPanel > .item {
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buttonPanel.vertical > .item {
+    display: block;
+}
+
+.buttonPanel.horizontal > .item {
+    display: inline-block;
+}
+
+.buttonPanel > .item:hover {
+    background: #f4F4f4;
+}
+
+.buttonPanel > .item.selected {
+    background: hsla(210, 69%, 92%, 1); /*#84C9FF;*/
+    text-shadow: 1px 1px 2px white;
+    font-weight: bold;
+}
+/*#endregion*/
+
+/*#region userTump*/
+.userTump > .head {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.userTump > .head .avatar  {
+    padding: 0px;
+    width: 0px;
+}
+
+.userTump > .head .avatar > img {
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 5px;
+}
+
+.userTump > .head .nickname {
+    width: 100%;
+    padding: 0;
+}
+
+.userTump > .head .nickname > h3 {
+    margin: 0;
+    color: black;
+    font-size: 23px;
+    line-height: 1;
+}
+/*#endregion*/
+
+/*#region uploadFiles*/
+.attachedfileeditor {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.attachedfileeditor > * {
+    vertical-align: middle;
+}
+
+.attachedfileeditor .fileViewItem {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.attachedfileeditor .fileViewItem > * {
+    vertical-align: middle;
+}
+
+.attachedfileeditor .fileViewItem > .statusIcon {
+    margin-left: 5px;
+}
+
+.attachedfileeditor > .attachedFiles {
+    white-space: normal;
+}
+
+.attachedfileeditor > .attachedFiles > .fileViewItem {
+    margin: 3px 0 0 8px;
+}
+
+.attachedfileeditor .formSelectFile {
+    display: inline-block;
+    z-index: 2;
+}
+
+
+.attachedfileeditor .formSelectFile > * {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.attachedfileeditor .formSelectFile > .butAttachFile {
+    position: relative;
+    direction: ltr;
+    overflow: hidden!important;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}
+
+.attachedfileeditor input[type=file] {
+    font: 20px monospace!important;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+}
+/*#endregion*/
+
+/*#region Отображение списка файлов */
+
+
+
+.attachedFiles._imgs > .fileViewItem {
+    /* Меняем позицию на релатив, чтобы кнопка удаления могла позиционироваться отсюда */
+    position: relative;
+    /* Ограничиваем ширину по контенту, чтобы кнопка удаления была всегда в углу картинки */
+    width: max-content;
+    margin: 0 5px 0 0;
+}
+
+.attachedFiles._imgs a>img {
+    height: 100px;
+}
+
+.attachedFiles._imgs._large a>img {
+    height: 600px;
+}
+
+.attachedFiles._imgs div.actionIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+    /* Рисуем серый круг */
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: #d1d1d1;
+}
+.attachedFiles._imgs .fileViewItem:hover > div.actionIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.attachedFiles._imgs div.actionIcon:before{
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: .8rem;
+    color:red;
+}
+.attachedFiles._imgs div.actionIcon:hover {
+    background: white;
+}
+
+
+/*#endregion*/
+
+/*#region .checkbox-list */
+.checkbox-list table{
+    border-collapse: collapse;
+}
+
+.checkbox-list > .group > .caption {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.checkbox-list > .group > .caption > input {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.checkbox-list > .group > .items {
+    margin-left: 19px;
+}
+
+.checkbox-list .checkbox-list-item {
+    display: inline-block;
+    vertical-align: top;
+    
+    margin-right: 20px;
+    margin-bottom: 5px;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.checkbox-list .checkbox-list-item:hover{
+    outline: 1px rgb(148, 148, 148) outset;
+    -webkit-box-shadow:  2px 2px 4px 0 rgba(148, 148, 148, 0.7);
+    box-shadow:  2px 2px 4px 0 rgba(148, 148, 148, 0.7);
+}
+
+.checkbox-list .checkbox-list-item .item-value {
+    vertical-align: top;
+    padding-right: 5px;
+    width: 1px;
+}
+
+.checkbox-list .checkbox-list-item .item-caption {
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.checkbox-list table.checkbox-list-item .enumValue span{
+    display: inline-block;
+}
+/*#endregion*/
+
+[sb-valueeditor=DisplayLabel] {
+    display: inline-block;
+    line-height: 1;
+}
+
+/*#region sb-widget-mixins=multyPartTable*/
+[sb-widget-mixins=multyPartTable] > * {
+    vertical-align: top;
+}
+/*#endregion*/
+
+/*#region table*/
+tr.action-row {
+    cursor: pointer;
+}
+
+tr.tv-row:hover, 
+tr.tv-row.submenu-opened {
+    background: var(--row-hover-color) !important;
+}
+
+table .titleTable th {
+    padding: 5px;
+    background: #FAF0E6;
+    border-bottom: 1px solid #41393B;    
+}
+
+table tr.tv-row.selectRecordRow {
+    background: #e6e6e6;
+}
+
+/*макс. ширину колонок ограничиваю 90символов. этого вбольшинстве случаев вполне достаточно для чтения текста.
+ и выравнивание по верху. */
+tr.tv-row > td {
+  max-width: 90ch;
+  vertical-align: top;
+}
+
+
+/*grid-cell - содержимое ячейки таблицы, в котром лежит контент и блок кнопок(опционально). Флекс нужен для нормального позиционирования контента(последовательно и с вертикальным ориентированием)*/
+td > div.grid-cell{
+	display: flex;
+	align-items: flex-start;
+}
+
+/*grid-head - содержимое заголовка таблицы*/
+th > div.grid-head{
+	display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 2px 0;
+}
+
+th > div.grid-head .column-toolbar{
+	display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: -5px;
+    padding-left: 5px;
+    height: 100%;
+}
+th._cansort .column-toolbar{
+    width: 1.6rem;
+}
+
+
+th > div.grid-head .sort:before{
+    color: #fea54a;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f30c";
+    font-size: .85rem;
+    opacity: 0; 
+}
+
+th._sort-desc > div.grid-head .sort:before{
+    content: "\f309";
+    opacity: 1;
+}
+
+th._sort-asc > div.grid-head .sort:before{
+    opacity: 1;
+}
+
+/* класс _filter-hover навешивается с помощью js и говорит о том, что в данный момент курсор находится над эдементом вызова фильтра. Чтобы мы не анимировали иконку сортировки */
+
+th._sort-asc:not(._filter-hover):hover > div.grid-head .sort{
+    animation: rotate 1.5s .7s linear  ;
+}
+
+th._sort-desc:not(._filter-hover):hover > div.grid-head .sort:before{
+    animation: disappear 1.5s .7s linear ;
+}
+
+th:not(._filter-hover):not(._sort-desc):not(._sort-asc):hover > div.grid-head .sort:before{
+    animation: appear 1.5s .7s linear ;
+}
+
+/* Анимации для иконки сортировки */
+
+
+@keyframes disappear { 
+    0% { 
+        
+    } 
+    40% { 
+        opacity: 0;  
+    }
+    60% { 
+        opacity: 0;  
+    }
+    100% { 
+         
+    }
+  }
+
+  @keyframes appear { 
+    0% { 
+        
+    }
+    50% { 
+        opacity: 1;  
+    }
+    100% { 
+         
+    }
+  }
+
+  @keyframes rotate { 
+    0% { 
+         
+    }
+    60% { 
+        transform: rotateX(180deg);  
+    }
+    61% { 
+        opacity: 1; 
+        transform: rotateX(180deg); 
+    }
+    99% { 
+        opacity: 0;
+        transform: rotateX(180deg);  
+    }
+    100% { 
+        opacity: 1;
+    }
+  }
+
+th > div.grid-head .column-action{
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    width: 1.2rem;
+}
+th > div.grid-head .column-action:before{
+    padding-right: 4px; 
+          
+}
+th:not(._filtered) > div.grid-head .column-action {
+    opacity: .3;
+
+}
+
+th:not(._filtered) > div.grid-head .column-action:before{
+    content: "\205D";
+    transform: scale(1.2);
+      
+}
+th > div.grid-head .column-action:hover{
+    background-color: #dcdcdc;
+}
+th:not(._filtered) > div.grid-head .column-action:hover{
+    opacity: 1;
+}
+
+th._filtered > div.grid-head .column-action:before{
+    color: #fea54a;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0b0";
+    font-size: .75rem;
+}
+
+
+th._filtered > div.grid-head .column-action:hover:before{
+    -webkit-text-stroke: .5px black;
+}
+
+
+
+/*Если ячейке явно указано центрирование, то мы повторяем его в контейнере с контентом и акшн-контейнером*/
+td[align="center"] > div.grid-cell{
+	justify-content: center;
+}
+/*Если ячейке явно указано центрирование, то мы повторяем его в контейнере с контентом и акшн-контейнером*/
+td[align="right"] > div.grid-cell{
+	justify-content: flex-end;
+}
+
+/*#endregion*/
+
+/*#region enumValue*/
+
+.tableViewData .enumValue *{
+    white-space: nowrap;
+}
+/*Для улучшения работы с выравниванием делаем enumValue флекс контейнером*/
+.enumValue {
+    border-collapse: collapse;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+}
+
+/*Для установки промежутков между элементами внутри enumValue*/
+.enumValue *:not(*:first-child) {
+    margin-left:3px; /*Все вложенные элементы enumValue кроме первого получают отступ слева*/
+}
+
+/*Иконке задаем минимальную ширину 20px, так как это самая широкая иконка из имеющихся и так мы сохраним правильное выравнивание*/
+.enumValue i {
+    min-width: 1.25rem;
+    text-align: center;
+}
+/* Картинке задаем паддинги по бокам, чтобы она была в центре и в сумме имела ширину самой большой иконки (20px) */
+.enumValue img {
+    padding: 0 2px;
+}
+
+.enumValue span {
+    
+	line-height: 1;
+	display: inline-block;
+}
+/* В настройках Перечислений в enumValue добавляется еще один элемент - порядковый номер элемента в списке. Делаем ему дополнительный отступ справа */
+.enumValue span.placeholder {
+	padding-right: 0.3em;
+}
+
+
+.enumValue span.bg {
+    padding: 3px 5px 3px 5px;
+    -moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+}
+
+/*#endregion*/
+
+/*#region Feedback*/
+#feedbackLableFixed {
+    position: fixed;
+    display: inline-block;
+    border: 1px solid #F18A2B;
+    border-right: 0px;
+    border-radius: 5px 0px 0px 5px;
+    width: 20px;
+    height: 87px;
+    padding: 5px 0px 5px 0px;
+    cursor: pointer;
+    z-index: 10;
+    top: 50%;
+    left: 100%;
+    margin-top: -50px;
+    margin-left: -21px;
+    background: rgb(255,206,163); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmY2VhMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2ZmZWVkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmNlYTMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(left,  rgba(255,206,163,1) 0%, rgba(255,238,221,1) 50%, rgba(255,206,163,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,206,163,1)), color-stop(50%,rgba(255,238,221,1)), color-stop(100%,rgba(255,206,163,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(255,206,163,1) 0%,rgba(255,238,221,1) 50%,rgba(255,206,163,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(255,206,163,1) 0%,rgba(255,238,221,1) 50%,rgba(255,206,163,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(255,206,163,1) 0%,rgba(255,238,221,1) 50%,rgba(255,206,163,1) 100%); /* IE10+ */
+    background: linear-gradient(left,  rgba(255,206,163,1) 0%,rgba(255,238,221,1) 50%,rgba(255,206,163,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcea3', endColorstr='#ffcea3',GradientType=1 ); /* IE6-8 */
+    -moz-box-shadow: -1px 0px 1px #d8d8d8;
+    -webkit-box-shadow: -1px 0px 1px #d8d8d8;
+    box-shadow: -1px 0px 1px #d8d8d8;
+}
+
+#feedbackLableFixed > div {
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.fbvalidationplace {
+    display: block;
+    color: red;
+    font-family: Arial;
+    font-size: 90%;
+    padding: 0px;
+    height: 22px;
+}
+
+.fbvalidationplace * {
+    color: red;
+}
+
+.formfeedback {
+    width: 500px;
+    display: inline-block;
+}
+
+.formfeedback #contact td {
+    vertical-align: top;
+}
+
+.formfeedback #contact td input {
+    margin-bottom: 10px;
+}
+/*#endregion*/
+
+/*#region container*/
+/*линия для заголовка блока*/
+.block-head {
+    height: 0.8em;
+    border-bottom: 1px solid var(--main-border-color);
+    margin-bottom: 10px;
+    margin-left: 3px;
+}
+.block-head > h3 {
+    background-color: white;
+    display: inline;
+    padding-right: 7px;
+    color: #666;
+    cursor: pointer;
+    user-select: none;
+}
+
+._expandable > .block-head > h3 {
+    cursor: pointer;
+}
+
+._expandable > .block-head > h3:before{
+    content: " ";
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    transform: scale(0.5) rotate(45deg);
+    margin-right: 2px;
+}
+/*галочка вбок - для схлопнутого блока*/
+div.s-collapsed._expandable > .block-head > h3:before {
+    transform: scale(0.5) rotate(-45deg);
+}
+/*чтоб контент блока не вылазил за границы и если больше - то чтоб возникали прокрутки*/
+.block-content {
+    overflow: auto;
+}
+
+/* container_l2r */
+.container_l2r > .block-content {
+    display: flex;
+}
+/* настройка ширин для режима - одинаковой ширины*/
+.container_l2r._blocks-same-width[data-visible-panels="2"] > div.block-content > div.container-item {
+    width: 50%;
+}
+.container_l2r._blocks-same-width[data-visible-panels="3"] > div.block-content > div.container-item {
+    width: 33.3%;
+}
+.container_l2r._blocks-same-width[data-visible-panels="4"] > div.block-content > div.container-item {
+    width: 25%;
+}
+.container_l2r._blocks-same-width[data-visible-panels="5"] > div.block-content > div.container-item {
+    width: 20%;
+}
+.container_l2r._blocks-same-width[data-visible-panels="6"] > div.block-content > div.container-item {
+    width: 16.6%;
+}
+
+
+/*#region buttonsBar*/
+.buttonsBar {
+    padding: 5px;
+}
+
+.buttonsBar > * ~ * {
+    margin: 0 0 0 5px;
+}
+
+.buttonsBar>.btn *+span,
+.buttonsBar>.btn *+img,
+.buttonsBar>.btn *+i{
+    margin-left:3px;/*содержимое кнопки должно иметь отступ слева от предыдущего элемента*/
+}
+.buttonsBar>.btn span+span{
+    margin-left:0px; /*два span подряд не должны иметь отступа между собой*/
+}
+
+/*#endregion*/
+
+/*#region popup*/
+.popup {
+    position: absolute;
+    left: -1000px;
+    background: #ffffff;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.popup #arrow-top-center-border {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid #b5b5b5;
+}
+
+.popup #arrow-top-center-border > #arrow-top-center-background {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #ffffff;
+    margin-left: -15px;
+    margin-top: 1px;
+}
+/*#endregion*/
+
+/*#region Help Hint*/
+.divHelpHint {
+    padding: 0px;
+    margin: 0px 2px 0px 5px;
+    position: relative;
+    background: url("/Content/img/helpHint.gif");
+    width: 12px;
+    height: 12px;
+    cursor: default;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.popup.helpHint {
+    display: block;
+    top: -10000px;
+    left: -1000px;
+    
+    border: 1px solid #b5b5b5;
+    background: #FAFAD2;
+    
+    padding: 5px 5px;
+    margin: 3px;
+    
+    max-width: 500px;
+    font-size: 95%;
+    font-weight: normal;
+    font-family: arial;
+    
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup.helpHint > .head, .popup.helpHint > .content {
+    padding: 0;
+}
+
+.popup.helpHint.helphint-userTumb {
+    min-width: 270px;
+    max-width: 270px;
+    background: rgb(242, 248, 255);
+}
+
+.popup.helpHint.validationHint {
+    border: 1px solid #ff8e83;
+    background: #FFEAE8;
+}
+/*#endregion*/
+
+/*#region dropdown menu*/
+.dropdown-menu {
+    display: none; /*чтоб дропдаун пункты были скрыты (если меню не отображено)*/
+    padding: 6px 0;
+    z-index: 2; /*чтоб выпадающие меню были выше оверлей слоя*/ 
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);   
+    position: absolute;
+    /* Бордюр и тень у диалога такие же как у  .dialog. Изменения вносить в оба места сразу.*/
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    box-sizing: border-box;
+    text-align: left; /*тк контейнер может задавть свой*/
+}
+
+.dropdown-menu > * {
+    cursor: pointer;
+    white-space: nowrap;
+    display: block; /*т.к. в качестве итема может быть ссылка*/
+    text-decoration: none;
+    color: inherit;
+    padding: 6px 16px 6px 8px;
+	min-height: 1.25em;
+}
+
+.dropdown-menu > *.s-selected {
+    background-color: var(--selected-item);
+}
+
+/* Уменьшаем отступ слева для элементов выпадающего меню, если в это меню есть элементы с картинкой/иконкой */
+.dropdown-menu._has-img > * {
+    padding-left: 5px;
+}
+
+.dropdown-menu > [data-action] {
+    display: block; /*чтоб перешибить inline-block который по умолчанию для [data-action]*/
+}
+.dropdown-menu > *:hover, .dropdown-menu > .dropdown.s-opened {
+    background: var(--hover-color);
+}
+
+.dropdown-menu > * > *:not(.dropdown-menu){
+    display: inline-block;
+    vertical-align: middle;    
+}
+
+.dropdown-menu > * > div.img {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+.dropdown-menu img {
+    width: 16px;
+}
+
+.dropdown-menu li *+span {
+    margin-left: 3px;
+}
+
+
+/*Делаем одинаковое выравнивание текста для всех элементов выпадающего меню*/
+.dropdown-menu._has-img > * > span:first-child {
+    margin-left: 23px; /*Текст идет первым. 23 пикселя отступ от края*/
+}
+.dropdown-menu li>img:first-child,
+.dropdown-menu a>img:first-child,
+.dropdown li>img:first-child,
+.dropdown a>img:first-child {
+    padding: 0 2px;/*Картика идет первая. Её 16 пикселей + 4 которые мы вводим(по 2 слева и справа, чтобы картинка была в центре), дают 20 в сумме. Если после будет идти текст, то он будет иметь стандартный отступ слева в 3 пикселя. В сумме - 23*/
+}
+.dropdown-menu li>i:first-child,
+.dropdown-menu a>i:first-child,
+.dropdown li>i:first-child,
+.dropdown a>i:first-child {
+    min-width: 20px;/*Иконка идет первая. Если после будет идти текст, то он будет иметь стандартный отступ слева в 3 пикселя. В сумме - 23*/
+    text-align: center; /* Располагаем иконку по центру, чтобы вертикальное выравнивание иконок в меню выглядело хорошо */
+}
+
+
+/*стрелка вниз  для дропдаун итема в гориз меню*/
+menu > li.dropdown::after {
+    content: '';
+    margin-top: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 5px solid transparent;	border-top: 5px solid;
+}
+/*стрелка вправо для дропдаун итема в дроп-даун меню*/
+ul.dropdown-menu > li.dropdown::after {
+    content: '';
+    position:absolute;
+    left: 100%;
+    margin-left: -10px;
+    margin-top: 2px;
+    /*height: 0px;*/
+    border: 5px solid transparent;	border-left: 5px solid;
+}
+
+
+
+/*#endregion*/
+
+/*#region menu*/
+menu.actionsbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+	display: flex;
+    flex-wrap: wrap;
+}
+
+menu.actionsbar > li {
+    cursor: pointer;
+    min-width: 2.15em;
+    min-height: 2.15em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+
+    font-weight: bold;
+}
+
+menu.actionsbar>li>*:not(i) {
+    color: inherit;/*Содержмиое кнопки должно наследовать цвет акшнбара. Иконки - исключение*/
+	text-decoration: none;
+}
+
+
+menu.actionsbar>li>a *+*{
+    margin-left:3px;/*Содержимое ссылки должно иметь отступы*/
+}
+menu.actionsbar li *+span,
+.actionsbar li *+img,
+.actionsbar li *+i{
+    margin-left:3px;/*Некоторые варианты содержимого кнопки должны иметь отступы*/
+}
+
+menu.actionsbar > li > ul {
+    font-weight: normal; /*отменяем жирный шрифт для выпадающего меню*/
+}
+menu.actionsbar ul.dropdown-menu {
+    display: none; /*чтоб дропдаун пункты были скрыты (если меню не отображено)*/
+}
+
+menu.actionsbar > li:hover {
+    background: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+.dropdown.s-opened > ul.dropdown-menu {
+    display: block; /*показываем дроп-даун меню*/
+}
+
+menu.actionsbar > li.dropdown.s-opened {
+    /*это нужно чтоб между итемом и выпадющим меню небыло линии, чтоб сливались
+      *пришлось убрать тк подменю теперь внутри итема и это портит
+    position: relative;
+    z-index: 1;*/
+    
+    background: white;
+    
+    border-color: rgba(0, 0, 0, 0.2);
+    border-bottom-color: transparent;
+    
+    -ms-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;  
+}
+
+menu.actionsbar > li > * {
+    display: inline-block;
+}
+
+menu.actionsbar > li * {
+    vertical-align: middle;
+}
+
+menu.actionsbar > li:hover > a > span, menu.actionsbar .dropdown-menu > a.item:hover > span {
+    text-decoration: underline;
+}
+
+
+
+menu.actionsbar .dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0px; /*тк ul имеет дефолтные - сбрасываем*/
+}
+
+/*#region menu.sb-menu*/
+menu.sb-menu > li {
+    padding: 5px 8px;
+}
+
+menu.sb-toolbar._icons-big > li._img-none {
+    padding: 12px 8px;
+}
+menu.sb-menu.actionsbar > li > ul.dropdown-menu{
+    /*margin: 6px 0px 0px 0px;*/ /*чтоб дропдаун-меню появлялось под пунктом гориз меню. убрал, тк подменю теперь js позиционирует, ненадо сдвигать */
+}
+
+/*#endregion*/
+
+/*#region menu.sb-toolbar*/
+menu.sb-toolbar {
+    padding: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+menu.sb-toolbar._icons-big > li {
+    min-width: 34px;
+}
+menu._icons-big.actionsbar>li{
+    min-width: 3.23em;
+    min-height: 3.23em;
+    
+}
+
+menu._icons-big.actionsbar>li>i.fa,
+menu._icons-big.actionsbar>li>i.fas,
+menu._icons-big.actionsbar>li>i.fab,
+menu._icons-big.actionsbar>li>a>i.fa,
+menu._icons-big.actionsbar>li>a>i.fas,
+menu._icons-big.actionsbar>li>a>i.fab{
+    font-size: 1.9em;
+    
+}
+
+menu._icons-big.actionsbar>li>a>*+*{
+    margin-left:5px; /*Элементы кнопок акшнбара с увеличенными иконками должны иметь увеличенный отступ*/
+}
+menu._icons-big.actionsbar>li>*+span,
+menu._icons-big.actionsbar li>*+img,
+menu._icons-big.actionsbar li>*+i{
+    margin-left:5px; /*Элементы кнопок акшнбара с увеличенными иконками должны иметь увеличенный отступ*/
+}
+
+menu.sb-toolbar > li  {
+    padding: 5px;
+}
+menu.sb-toolbar > li.dropdown  {
+    padding-right: 1px;
+}
+menu.sb-toolbar > li.dropdown::after {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+menu.sb-toolbar.actionsbar > li > ul.dropdown-menu{
+    /*margin: 2px 0px 0px 0px;*/ /*чтоб дропдаун-меню появлялось под кнопкой. убрал, тк подменю теперь js позиционирует, ненадо сдвигать*/
+}
+menu.sb-toolbar.actionsbar > li._img-none > ul.dropdown-menu{
+    /*margin: 9px 0px 0px 0px; */ /*чтоб дропдаун-меню появлялось под кнопкой - для кнопки без иконки*/
+}
+
+menu.sb-toolbar._mini > li  {
+    border: none;
+    color: black;
+    opacity: .6;
+    min-width: 0;
+    min-height: 0;
+    padding: 0.2em;
+    margin: 0.2em;
+}
+
+menu.sb-toolbar._mini > li i {
+    color: black;
+}
+
+
+menu.sb-toolbar._mini > li > i,
+menu.sb-toolbar._mini > a > i  {
+    color: black;
+}
+
+menu.sb-toolbar._mini {
+    padding: 0;
+    align-items: center;
+}
+menu.sb-toolbar._mini > li:hover,
+menu.sb-toolbar._mini > a:hover  {
+    opacity: 1;
+    background: none;
+}
+
+menu.sb-toolbar._mini > a.action-url {
+    display: flex;
+}
+
+menu.sb-toolbar._mini > li > a > span,
+menu.sb-toolbar._mini > a{
+    text-decoration: none;
+}
+
+/*#endregion*/
+
+/*специфика для топ-тулбара (кнопок в верхней панеле) */
+.sb-toolbar[data-elemid=toptoolbar]{
+    flex-wrap: nowrap;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+/*чтоб выделялась кнопка при ховере мышью*/
+.sb-toolbar[data-elemid=toptoolbar] > li:hover {
+    background: #d8e9ff;
+    border: 1px outset #ffffff;
+    border-radius: 5px;
+}
+
+.sb-toolbar[data-elemid=toptoolbar] > li {
+    color: rgba(0,0,0,.5); /*чтоб текст был сероватый, а при ховере черный*/
+    min-width: 32px;
+    margin-left: 4px;
+}
+.sb-toolbar[data-elemid=toptoolbar] > li:hover {
+    color: inherit;
+}
+
+
+/*#region contextmenu*/
+.contextmenu.dropdown-menu.s-opened {
+    display: block;
+}
+.contextmenu .item {
+    padding: 3px 5px;
+}
+/*#endregion*/
+
+/*#region separator*/
+/* Эдемент, который отделяет элементы меню*/
+
+menu.actionsbar > li.separator,
+.dropdown-menu > li.separator {
+    background-color: transparent;
+    background: none;
+    border-color: transparent;
+    cursor: auto;
+    min-width: 0;
+    min-height: 0;
+}
+
+menu.actionsbar > li.separator:hover{
+    background-color: transparent;
+    border-color: transparent;
+    background: none;
+}
+
+ul.dropdown-menu > li.separator:hover {
+    background-color: transparent;
+    background: none;
+}
+
+ul.dropdown-menu > li.separator {
+    border-bottom: 1px solid var(--main-border-color);
+    padding: 0;
+    margin: 3px 5px;
+}
+
+/*#endregion*/
+
+/*#endregion*/
+
+
+/*#region serverNotifications*/
+[sb-widget=serverNotifListener] {
+    position: relative;
+}
+
+[sb-widget=serverNotifListener] .notifCounter {
+    position: absolute;
+    display: none;
+    top: 2px;
+    right: 2px;
+    border-radius: 6px;
+    background: red;
+    color: white;
+    padding: 1px 6px;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+.popup.serverNotifications {
+    background: aliceblue;
+    width: 50em;
+    z-index: 1;
+    border: 1px solid #B5B5B5;
+    
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    
+    -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.popup.serverNotifications #arrow-top-center-border > #arrow-top-center-background {
+    border-bottom: 15px solid #E7F2FF;
+}
+
+.popup.serverNotifications {
+    padding: 5px 10px;
+}
+
+.popup.serverNotifications .notifyBlock > .title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #143764;
+}
+
+.popup.serverNotifications .notifyBlock > .filters {
+    padding: 5px 0;
+}
+
+.popup.serverNotifications .notifyBlock > .filters > button {
+    border-radius: 11px;
+    padding: 1px 10px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    color: #2067AF;
+}
+
+.popup.serverNotifications .notifyBlock > .filters > button:hover {
+    background: #edf0f5;
+    background: -moz-linear-gradient(top,  #edf0f5 0%, #d9e9ff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#edf0f5), color-stop(100%,#d9e9ff));
+    background: -webkit-linear-gradient(top,  #edf0f5 0%,#d9e9ff 100%);
+    background: -o-linear-gradient(top,  #edf0f5 0%,#d9e9ff 100%);
+    background: -ms-linear-gradient(top,  #edf0f5 0%,#d9e9ff 100%);
+    background: linear-gradient(to bottom,  #edf0f5 0%,#d9e9ff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edf0f5', endColorstr='#d9e9ff',GradientType=0 );
+    border-color: #C7E1FF;
+    
+    -webkit-box-shadow: 0 1px 1px 1px #AFC5DD;
+    box-shadow: 0 1px 1px 1px #AFC5DD;
+}
+
+.popup.serverNotifications .notifyBlock > .filters > button.active {
+    background: #D0DDE0;
+    border-color: #CFD9DB;
+    color: #5C6470;
+    
+    -webkit-box-shadow: inset 0 1px 1px 1px #B6C6CA;
+    box-shadow: inset 0 1px 1px 1px #B6C6CA;
+}
+
+.popup.serverNotifications .notifyBlock > .filters > button ~ button {
+    margin-left: 10px;
+}
+
+.popup.serverNotifications .notifyBlock .notifs {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.popup.serverNotifications .notifyBlock .notifs .notifActions {
+    white-space: nowrap;
+    visibility: hidden;
+}
+
+.popup.serverNotifications .notifyBlock .notifs tr:hover .notifActions {
+    visibility: visible;
+}
+
+.popup.serverNotifications .notifyBlock .notifs .notifActions > .action ~ .action {
+    margin-left: 10px;
+}
+
+.popup.serverNotifications .notifyBlock > .notifs > table > tbody > tr > td:first-child {
+    word-break: break-word;
+}
+
+.popup.serverNotifications .notifyBlock > .notifs > table > tbody > tr ~ tr {
+    border-top: 1px solid white;
+}
+
+.popup.serverNotifications .notifyBlock > .notifs > table > tbody > tr:nth-child(odd) {
+    background-color: #F2F8FF;
+}
+
+.popup.serverNotifications .notifyBlock > .notifs .createDate {
+    color: #777;
+    font-size: 11px;
+}
+
+.popup.serverNotifications > .notificationsToolbar {
+    padding-top: 5px;
+}
+
+.popup.serverNotifications > .notificationsToolbar > *{ 
+    display: inline-block;
+    line-height: 1;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.popup.serverNotifications > .notificationsToolbar > i.fa,
+.popup.serverNotifications > .notificationsToolbar > i.fas,
+.popup.serverNotifications > .notificationsToolbar > i.fab,
+.popup.serverNotifications > .notificationsToolbar > i.icon { 
+    font-size: 1.4em;
+    color: var(--top-toolbar-icon-color);
+}
+.popup.serverNotifications > .notificationsToolbar > i.fa[class*=fa-comment],
+.popup.serverNotifications > .notificationsToolbar > i.fas[class*=fa-comment],
+.popup.serverNotifications > .notificationsToolbar > i.fab[class*=fa-comment],
+.popup.serverNotifications > .notificationsToolbar > i.icon[class*=fa-comment] { 
+    font-size: 1.1em; /*кнопки без этого смотрятся больше чем надо*/
+}
+
+
+.popup.serverNotifications > .notificationsToolbar > * + * { 
+    margin-left: 15px;
+}
+/*#endregion*/
+
+/*#region truncate text control*/
+.trText {}
+
+.trText > .trText-item {
+    display: none;
+}
+
+.trText > .trText-control {
+    white-space: nowrap;
+    display: inline !important;
+    margin-left: 5px;
+}
+
+.trText > .trText-control > * {
+    cursor: pointer;
+}
+
+.trText > .trText-control > * > img{
+    vertical-align: text-top;
+}
+
+.trText > .trText-control > * ~ * {
+    margin-left: 3px;
+}
+
+.trText > .trText-control .trText-control-showAll {}
+
+.trText > .trText-control .trText-control-hideAll {
+    display: none;
+}
+/*#endregion*/
+
+/*#region propertyeditor*/
+.propertyeditor .inputHolder > .editorActions {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
+.propertyeditor .inputHolder > .editorActions > .btn ~ .btn {
+    margin-left: 5px;
+}
+/*#endregion*/
+
+/*для email адресов в режиме readonly что бы стандартный tooltip был под курсором*/ 
+.emails-addresses > .address {
+    cursor: default;
+}
+
+/*#region AutocompleteInput*/
+.acinp-dropdown {
+    min-width: 200px;
+    overflow: hidden;
+    cursor: default;
+    
+    background-color: #fff;
+    border: 1px solid #7F9DB9;
+    
+    -webkit-box-shadow:  2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow:  2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.acinp-dropdown .acinp-message, 
+.acinp-dropdown .acinp-list-group > .acinp-list-group-title {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    color: #777;
+}
+
+.acinp-dropdown .acinp-list {
+    margin: 0;
+    padding: 0;
+    
+    list-style-type: none;
+}
+
+.acinp-dropdown .acinp-list .acinp-list-item {
+    padding: 3px;
+    background-color: #fafafa;
+}
+
+.acinp-dropdown .acinp-list .acinp-list-item2 {
+    background-color: #fff;
+}
+
+.acinp-dropdown .acinp-list .acinp-list-item.acinp-list-item-selected {
+    background-color: #3b5998 !important;
+    color: #fff;
+}
+
+.acinp-dropdown .acinp-list-group > .acinp-list-group-items {
+    margin-left: 13px;
+}
+/*#endregion*/
+
+/*#region input-group*/
+.input-group {
+    display: inline-flex;
+    display: -webkit-inline-flex; /* Safari */
+    align-items: flex-start; /*по верху, чтоб кнопки внутри группы прижимались кверху*/
+}
+.input-group.fullWidth {
+    display: flex;
+    display: -webkit-flex; /* Safari */
+}
+
+.value-editor.refseteditor > input  {
+    width: 100%; 
+}
+
+/*чтоб инпут занимал весь свой контейнер или расширял его. и чтоб контейнер нормально сайзился во флэкс-контейнере
+  и кроме checkbox-а, тк применение к нему width: 100% почемуто схлопывает контейнер. а без 100% норм, контейнер сжиматеся
+  до размеров чекбокса.
+  и кроме несжимаемых (это дата-время, время, числового - тк для них задана явная ширина и сжимать его не надо)
+  за счет спец. тех. класса
+ */
+.input-group > .value-editor:not([type=checkbox]):not(._noshrink) {
+    width: 100%;
+}
+/**/
+.input-group > .value-editor._noshrink {
+    flex-shrink: 0;
+}
+
+.input-group > input[type=checkbox] {
+    margin-top: 2px;
+}
+
+
+.input-group > div[data-action],
+.input-group > a.action-url,
+.actions-container > div[data-action],
+.actions-container > a.action-url {
+    font-size: 0.73rem;
+	font-family: sans-serif;
+}
+
+.input-group > div[data-action] > i,
+.input-group > a.action-url > i,
+.actions-container > div[data-action] > i,
+.actions-container > a.action-url > i{
+    font-size: 1.3em;
+}
+/*#endregion*/
+
+/*комбик чтоб имел дефолтную минимальную ширину. иначе блок может сильно сжиматься*/
+select.comboboxeditor {
+    min-width: 7ch;
+}
+
+/*#region спец. правила для разных редакторов (внутри input-group) */
+/*#region NumberEditor */
+input.value-editor_number{
+    text-align: right;
+}
+/*чтоб в активном поле значение было выровнено влево*/
+input.value-editor_number:focus{
+    text-align: left;
+}
+/*чтоб текст плэйсхолдера был влево*/
+input.value-editor_number::-webkit-input-placeholder, input.value-editor_number:placeholder-shown{
+    text-align: left;
+}
+/*костыль для IE - работает*/
+input.value-editor_number::-ms-input-placeholder {
+    text-align: left;
+}
+input.value-editor_number:-ms-input-placeholder {
+    text-align: left;
+}
+
+/*для текстариа*/
+textarea.value-editor_text {
+    padding-left: 4px; /*чтоб большой текст имел отспупы от бордюров, иначе почти впритык*/
+    padding-right: 4px;
+}
+textarea.value-editor_text.autosize {
+    max-height: calc(100vh - 60px); /*огранич. макс. высоты - размером экрана и минус размер шапки. это ок, чтоб эдитор на форме при скроле её входил на всё окно */
+}
+.dlg-inputParams textarea.value-editor_text.autosize {
+    max-height: 30em; /* внутри диалога пара-ров обычно не надо чтоб высота по умолч была большой */
+}
+
+/*#endregion*/
+
+
+/*стилизация таблички с данными - простая (simple) */
+/*#region*/
+table.data-table-simple {
+	border-collapse: collapse;
+}
+
+table.data-table-simple > tbody > tr > th {
+	background-color: #eae8e8;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+table.data-table-simple > tbody > tr > th, table.data-table-simple > tbody > tr > td {
+	border: 1px solid #C2D4DA;
+}
+
+table.data-table-simple > tbody > tr > td {
+	padding-left: 5px;
+    padding-right: 5px;
+} 
+th>span.sort-ind{
+    float:right;
+    padding-left: 0.3em;
+    transform: scale(1.2);
+}
+th._sort-asc>span.sort-ind:before{
+    content: "↓";
+}
+th._sort-desc>span.sort-ind:before{
+    content: "↑";
+}
+/*for group row*/
+table.data-table-simple > tbody > tr.group-row {
+    background-color: #eae8e8; /*строка группы - темная*/
+    font-weight: bold;
+}
+table.data-table-simple > tbody > tr.group-row > td {
+    border-bottom-width: 0; /*без нижнего бордюра - чтоб сливалось с колонкой сдвига*/
+}
+table.data-table-simple > colgroup > col.group-col {
+    width: 20px; /*ширина колонок для сдвига уровней групп*/
+}
+/*убираем бордюры внутри ячеек сдвига групп*/
+table.data-table-simple > tbody > tr > td.group-indent-cell{
+    background-color: #eae8e8;
+}
+table.data-table-simple > tbody > tr > td.group-indent-cell {
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+table.data-table-simple > tbody > tr:last-child > td.group-indent-cell {
+    border-bottom-width: 1px; /*для последней строки восстанавливаем нижний бордюр*/
+}
+/*футер группы - более серый*/
+table.data-table-simple > tbody > tr.group-footer {
+    background-color: #d6d1d1;
+}
+
+table.data-table-simple tr:nth-child(odd) {
+/* убрал тк с группами неочень это смотрится. ?может лучше если с группами -убрать
+    background-color: whitesmoke; /* Цвет фона четных строк */
+
+}
+/*#endregion*/
+
+/*если задан цвет строки, то делаем чтоб вложенные элементы испольовали его - отменяем у них цвет заданный стилями*/
+tr.customRowColor td > * {
+    color: inherit;
+}
+tr.customRowColor td * a { /*усиливаем для ссылок, тк щас это перекрывает дев-экспресс*/
+    color: inherit;
+}
+
+
+/*#region правила для группы полей  (по умолчанию поля сверху-вниз) */
+.prop-editor-input input[type=text], .prop-editor-input input[type=search], .prop-editor-input textarea, .prop-editor-input select, 
+[sb-valueeditor=DisplayLabel] {
+    font-family: monospace;
+}
+table.props-list {
+    border-collapse: collapse;
+    /* убрал, тк табл выходила за конт width: calc(100% - 10px); /*-10 чтоб табл не съедали отступы*/
+    margin-left: 15px;
+    margin-right: 5px;
+}
+table.props-list > tbody > tr > td {
+    vertical-align: top;
+}
+.propertyeditor > .caption {
+    font-family: arial;
+    font-weight: bold;
+}
+
+table.props-list > tbody > tr > td.caption {
+    text-align: left;
+    vertical-align: top;    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 50px;
+    max-width: 30ch;
+    padding: 4px 0px 4px 0px;
+    margin: 0;
+}
+table.props-list > tbody > tr > td.requiredmark {
+    padding: 6px 2px 0px 2px;
+}
+table.props-list > tbody > tr > td.prop-editor-input {
+    /*width: 100%;*/
+    padding: 4px 3px 4px 2px;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+/*правила для группы полей с расположением слева-направо*/
+div.props-list{
+    margin-left: 15px;
+    margin-right: 5px;
+}
+.props-list_l2r > .propertyeditor{
+    display: inline-block;
+    margin: 4px 5px 4px 0px;
+    vertical-align: top;
+}
+.props-list_l2r > .propertyeditor:last-child{
+    margin-right: 0px; /*у последнего 0*/
+}
+.props-list_l2r > button:first-of-type {
+    margin: 4px 2px 0px 5px;
+}
+.props-list_l2r > .propertyeditor > *{
+    vertical-align: top;
+}
+.props-list_l2r > .propertyeditor > .caption{
+    display: inline-block;
+    margin-right: 5px;
+}
+.props-list_l2r > .propertyeditor > span.requiredmark{
+    padding-right: 3px;
+    vertical-align: middle;
+}
+.props-list_l2r > .propertyeditor > .prop-editor-input {
+    display: inline-block;
+}
+
+/*для проп-эдитора в режиме - вертикально*/
+.propertyeditor > td > .caption {
+    font-family: arial;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: default;
+}
+/*про-эдитор вида - внедр таблица */
+.propertyeditor._style-embeded > td > .caption {
+    border-bottom: 1px solid var(--main-border-color);
+}
+.caption > span.requiredmark {
+    padding-left: 0.3em;
+}
+
+/** для формы ввода параметров действия **/
+.form-inputParams > div.action-descr {
+    padding: 10px 15px;
+    width: 55em;
+}
+div.action-descr h4 {
+    margin-top: 0.4em;
+    margin-bottom: 0.1em;
+}
+
+/** окно вывода сообщения об ошибке **/
+table.error-panel > tbody > tr > td:first-child {
+    padding: 1em;
+    vertical-align: top;
+}
+table.error-panel > tbody > tr > td:nth-child(2) {
+    padding-right: 1em;
+}
+
+/** values-container **/
+ul.values-container {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul.values-container > li {
+    margin: 1px;
+    background-color: #eff2f7;
+    float: left;
+    border: 1px solid #ccd5e4;
+    border-radius: 4px;
+    padding: 2px;
+}
+ul.values-container > li.cmd-toggle {
+    color: blue;
+    border: 0px;
+    border-bottom: 1px dotted blue;
+    background-color: initial;
+    border-radius: 0px;
+    cursor: pointer;
+}
+/* для итема ссылка - убираем подчеркивание */
+ul.values-container > li > a {
+    color: Black;
+    text-decoration-line: none;
+}
+
+
+/** alerts **/
+.alert {
+    font-size: 1.1em;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    padding: 3px;
+}
+.alert > h3, .alert > p {
+    margin: 0
+}
+
+.alert_info {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+/* пред вар-т с зеленоватым
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb; */
+}
+.alert_warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.alert_danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert_success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+}
+
+.stick.alert_info {
+    border-color: #90c4ff;
+}
+
+.stick.alert_warning {
+    border-color: #f5cb49;
+}
+.stick.alert_danger {
+    border-color: #ff4f62;
+}
+
+.stick.alert_success {
+    border-color: #86f15b;
+}
+
+#content > .alert {
+    padding: .75rem 1rem;
+    margin-bottom: .75rem;
+}
+
+
+/** для дифов **/
+ins {
+    background:#e6ffe6;
+}
+del {
+    background:#ffe6e6;
+}
+.code-diff {
+    max-height: 50em;
+    overflow: auto;
+}
+.code-diff > .diff-block-header {
+    background: beige;
+    padding-left: 0.5em
+}
+.code-diff > pre {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* для всплывающих сообщений */
+td.notif-text {
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+
+/*#region Заглушка на время закгрузки контента*/
+.loading-notice{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.loading-notice._centered{
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loading-notice > img{
+    height: 25px;
+}
+
+.loading-notice > span{
+    margin-left: 0.5rem;
+}
+
+/*#region tableFooter*/
+
+
+.tableView > .footer{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2px 5px;
+    background-color: var(--simple-table-head);
+    border: 0;
+    border-top: 1px solid var(--main-border-color);
+    font: 12px Tahoma,Geneva,sans-serif;
+}
+
+.tableView > .footer > *:not(:last-child) {
+    margin-right: 3em;
+}
+
+.paginator-state > * {
+    display: inline-block;
+}
+
+.paginator-state > div {
+    margin: 0 .3em;
+}
+
+.paginator-state > span {
+    color: #656566;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.tableView > .footer > .paginator-state.recs-range {
+    min-width: 25ch;    
+}
+
+.tableView > .footer > .paginator-state.recs-range.s-all-recs {
+    min-width: auto;
+    margin-left: -12.5ch;    
+}
+
+.tableView > .footer > .paginator-state.recs-count {
+    min-width: 23ch; 
+}
+
+.tableView > .footer > .paginator-state {
+    height: 2em; 
+}
+
+.tableView > .footer > .paginator-state.recs-count > * {
+    vertical-align: baseline; 
+}
+
+.tableView > .footer > .paginator-state.page-size {
+    margin-left: auto;    
+}
+
+.tableView > .footer .recs-counter > .actions-container > div[data-action] {
+    display: flex;
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.tableView > .footer > .page-selector > li[data-action="previousPage"] > i,
+.tableView > .footer > .page-selector > li[data-action="nextPage"] > i{
+    min-width: 1em;
+    text-align: center;
+}
+
+.tableView > .footer .input-group{
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0;
+}
+
+.tableView > .footer .input-group > input:focus-visible {
+    outline: 0;
+}
+
+.tableView > .footer .input-group:not(.s-active) > input{
+    margin-right: -2.8ch;
+    background: none;
+    border-color: transparent;
+    text-decoration: underline;
+}
+
+.tableView > .footer .input-group > input:hover:not(:focus-visible){
+    cursor: pointer;
+}
+
+.tableView > .footer .input-group > div.submit-button::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f058";
+    font-size: 1.2em;
+    color: green;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.tableView > .footer .input-group:not(.s-active) > div.submit-button {
+    display: none;
+}
+
+.tableView > .footer  .btns-ligth > div[data-action] > span {
+    color: black;
+    border-color: black;
+    opacity: 0.8;
+}
+
+.tableView > .footer .btns-ligth > div[data-action]:hover > span {
+    opacity: 1;
+}
+
+
+.tableView > .footer li[data-action=showTotals] > span {
+    font-size: .95rem;
+    margin-top: -.1em;
+}
+
+.tableView > .footer li[data-action=refreshGrid] > i {
+    font-size: .9rem;
+}
+
+/* div.tableView > .footer.s-collapsed > *:not(._toggler) {
+    display: none;
+}
+
+div.tableView > .footer > ._toggler:before {
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    opacity: .6;
+    font-size: 1em;
+    line-height: 1;
+    font-weight: 900;
+    content: "\f107";
+}
+
+div.tableView > .footer.s-collapsed > ._toggler:before {
+    content: "\f105";
+}
+
+div.tableView > .footer > ._toggler:hover:before {
+    opacity: 1;
+    cursor: pointer;
+} */
+
+
+/*#region tableFooter _light*/
+
+.tableView > .footer._light{
+    background-color: transparent;
+    border: 0;
+}
+
+.tableView > .footer._light > .paginator-state.page-size {
+    margin-left: 0;  
+}
+/*#endregion*/
+
+/*#endregion*/
+
+/*#endregion*/
+
+/*#region Анимация*/
+._animation-dot{
+    position: relative;
+}
+
+._animation-dot > span {
+    border-bottom: 0 !important;
+}
+
+._animation-dot::after{
+    position: absolute;
+    content: " ";
+    border-bottom-width: 2.5px;
+    border-bottom-style: dotted;
+    top: 100%;
+}
+
+._animation-dot::after{
+    animation: 2s bottom-dots infinite;
+}
+
+@keyframes bottom-dots {
+    0% {
+        width: 0%; 
+        left: 0; 
+    }
+    25% {
+        width: 100%; 
+        left: 0; 
+    } 
+    50% {
+        width: 0%; 
+        left: 100%; 
+    }
+    75% {
+        width: 100%; 
+        left: 0;
+    } 
+    100% {
+        width: 0%; 
+        left: 0%; 
+    }
+}
+
+/*#endregion*/
